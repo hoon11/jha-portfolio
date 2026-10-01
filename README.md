@@ -19,6 +19,7 @@ Use Node.js 22 or later.
 
 ```sh
 npm install
+npm run setup:hooks
 npm run dev
 ```
 
@@ -30,6 +31,10 @@ npm run typecheck
 npm run build
 npm run start
 ```
+
+## Local Git checks
+
+Run `npm run setup:hooks` after cloning to enable the repository hooks. The pre-commit hook checks staged files for private or generated paths, whitespace errors, and recognizable credentials. The pre-push hook runs the tests, TypeScript check, and production build. Keep private notes and local review captures outside commits.
 
 ## Lab behavior
 

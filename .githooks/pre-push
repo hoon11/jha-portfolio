@@ -1,0 +1,10 @@
+#!/bin/sh
+set -eu
+
+for check in test typecheck build; do
+  printf 'pre-push: running npm run %s\n' "$check"
+  if ! npm run "$check"; then
+    printf 'pre-push: npm run %s failed; push blocked.\n' "$check" >&2
+    exit 1
+  fi
+done
