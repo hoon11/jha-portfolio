@@ -80,7 +80,7 @@ export default function SiteNavigation() {
     </nav>
     <div className="sidebar-note" aria-hidden="true">
       <span className="sidebar-note-title">Approach</span>
-      <span>Understand the system.<br />Find the cause.<br />Verify the fix.</span>
+      <span>Understand · Reproduce · Fix · Verify</span>
     </div>
   </header>;
 }

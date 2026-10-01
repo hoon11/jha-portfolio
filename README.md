@@ -11,7 +11,7 @@ Built with Next.js, React, TypeScript, and plain CSS. The pages and shared layou
 | `/lab` | Real personal projects |
 | `/lab/api-rescue-lab` | Project explanation and interactive local simulation |
 
-`doc/DESIGN.md` is the current implementation specification. The PNGs in `doc/ui/` are visual references.
+The [design specification](doc/DESIGN.md) is the canonical public reference for this portfolio. The [UI reference](doc/ui/README.md) records its visual rules, and the [production checklist](doc/PRODUCTION_CHECKLIST.md) covers release verification.
 
 ## Run locally
 
@@ -48,6 +48,6 @@ Tests exercise the component with the actual simulator and fake timers, plus out
 
 ## Publishing
 
-Review the career copy in `content/portfolio.ts`, contact links, and metadata before publishing. Keep private career and planning documents gitignored and out of deployment inputs.
+Review the career copy in `content/portfolio.ts`, contact links, and metadata before publishing. Keep private career notes and review captures out of the repository and deployment inputs.
 
 An operator can import the repository into Vercel, select the Next.js preset, use Node.js 22 or later, and deploy the project root. No environment variables are needed. Verify desktop and mobile layouts and all four lab scenarios on the preview before promoting it to production.

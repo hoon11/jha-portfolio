@@ -7,8 +7,10 @@ export const metadata: Metadata = { title: "API Rescue Lab | J. Ha", description
 export default function ApiRescueLabPage() {
   return <div className="inner-page lab-detail">
     <Link className="back-link" href="/lab"><span aria-hidden="true">←</span> Back to Lab</Link>
-    <header className="page-intro detail-intro"><p className="eyebrow">Personal project · Local simulation / sample data</p><h1>API Rescue Lab</h1><p>When a response is slow, fails, or contains bad data, users still need a clear status and any valid tasks they already loaded. Explore how this local simulation keeps the task view understandable.</p></header>
+    <header className="page-intro detail-intro"><p className="eyebrow">Personal project · Local simulation / sample data</p><h1>API Rescue Lab</h1><p>When a response is slow, fails, or contains bad data, users still need a clear status and any valid tasks they already loaded.</p><p className="detail-instruction">Run Normal, try a failure, then run Normal again.</p></header>
     <section className="content-panel lab-detail-panel" aria-label="Interactive simulation">
+      <h2 className="sr-only">Interactive simulator</h2>
+      <ApiRescueLab />
       <div className="detail-explanation">
         <div>
           <h2>What this demonstrates</h2>
@@ -30,7 +32,6 @@ export default function ApiRescueLabPage() {
           <p>Retry repeats the selected failure condition.</p>
         </div>
       </div>
-      <ApiRescueLab />
     </section>
   </div>;
 }

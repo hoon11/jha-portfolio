@@ -1,5 +1,8 @@
-career-context.md
-DESIGN.md
+.env*
+doc/career-context.md
+doc/DESIGN.md
+doc/private/
+doc/review/
 doc/ui/
 .work/
 artifacts/

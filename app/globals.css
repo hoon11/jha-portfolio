@@ -137,8 +137,9 @@ button:disabled { cursor: wait; opacity: .68; }
 .work-list .technology-list { margin-top: 10px; }
 .back-link { margin-top: 6px; }
 .detail-intro { padding-top: 8px; }
+.detail-intro .detail-instruction { color: var(--text); font-weight: 700; }
 .lab-detail-panel { padding: 24px; }
-.detail-explanation { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(220px, .6fr); gap: 26px; margin-bottom: 23px; }
+.detail-explanation { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(220px, .6fr); gap: 26px; margin-top: 23px; }
 .detail-explanation h2 { font-size: 22px; }
 .detail-explanation p { margin-top: 9px; color: var(--text-secondary); font-size: 14px; }
 .demonstration-list, .detail-aside ol { margin: 14px 0 0; padding-left: 22px; color: var(--text-secondary); font-size: 14px; line-height: 1.55; }
@@ -265,7 +266,11 @@ button:disabled { cursor: wait; opacity: .68; }
   .project-icon { width: 46px; height: 46px; font-size: 28px; }
   .project-card h3 { font-size: 19px; }
   .project-link { grid-column: 1 / -1; justify-self: stretch; }
-  .workflow { grid-template-columns: minmax(0, 1fr); }
+  .workflow { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .workflow li { display: grid; grid-template-columns: 28px minmax(0, 1fr); column-gap: 10px; padding: 10px 12px; }
+  .workflow li > span { grid-row: 1 / span 2; padding-top: 2px; }
+  .workflow h4 { margin-top: 0; }
+  .workflow p { grid-column: 2; margin-top: 2px; font-size: 14px; }
   .contact-panel { display: block; padding: 20px; }
   .contact-links { margin-top: 18px; }
   .contact-links .button { flex: 1 1 125px; }
@@ -286,4 +291,9 @@ button:disabled { cursor: wait; opacity: .68; }
   .lab-toolbar { flex-wrap: wrap; }
   .task-list li { align-items: start; }
   .site-footer { flex-wrap: wrap; gap: 0 15px; }
+}
+
+@media (max-width: 350px) {
+  .experience-card { grid-template-columns: minmax(0, 1fr); }
+  .experience-card .card-number { display: none; }
 }
