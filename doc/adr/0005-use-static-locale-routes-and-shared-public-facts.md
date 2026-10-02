@@ -34,7 +34,7 @@ Old links incur one redirect. Language switching resets Lab state in exchange fo
 
 ## Alternatives considered
 
-- Keep English unprefixed and prefix Japanese/Korean. This preserves English canonical URLs but splits the root layout/routing rules and makes `/` ambiguous between English and a preference entry point.
+- Keep English unprefixed and prefix Japanese/Korean. This preserves English canonical URLs but requires different URL conventions for English and other languages, and makes `/` ambiguous between English and a preference entry point.
 - Translate only on the client or use cookies on unchanged URLs. This weakens shareability and correct initial language/metadata, or makes page rendering depend on each request.
 - Persist Lab state between locale roots. This adds state transfer or storage to a deliberately transient demonstration.
 

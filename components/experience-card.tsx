@@ -1,6 +1,4 @@
-import { portfolio } from "../content/portfolio";
-
-type Experience = (typeof portfolio.experience)[number];
+import type { Experience } from "../content/portfolio";
 
 export default function ExperienceCard({ experience, number }: { experience: Experience; number: number }) {
   return <article className="experience-card">

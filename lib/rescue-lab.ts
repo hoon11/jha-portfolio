@@ -1,12 +1,16 @@
 export type Scenario = "normal" | "slow" | "server" | "invalid";
 export type Task = { id: string; title: string; status: "Queued" | "Processing" | "Complete" };
 export type FailureReason = "timeout" | "server" | "invalid";
+export type LabEvent =
+  | { kind: "started"; id: number; scenario: Scenario }
+  | { kind: "succeeded"; id: number }
+  | { kind: "failed"; id: number; reason: FailureReason; hadData: boolean };
 export type RequestState =
   | { kind: "idle" }
   | { kind: "loading"; id: number; scenario: Scenario }
   | { kind: "success"; id: number }
   | { kind: "failure"; id: number; scenario: Scenario; reason: FailureReason };
-export type LabState = { selected: Scenario; request: RequestState; tasks: Task[] | null; events: string[] };
+export type LabState = { selected: Scenario; request: RequestState; tasks: Task[] | null; events: LabEvent[] };
 export type RequestResult =
   | { kind: "success"; tasks: Task[] }
   | { kind: "failure"; reason: FailureReason }
@@ -15,17 +19,7 @@ export type LabAction =
   | { type: "select"; scenario: Scenario }
   | { type: "start"; id: number; scenario: Scenario }
   | { type: "finish"; id: number; result: RequestResult };
-export const scenarioOptions: { value: Scenario; label: string; detail: string }[] = [
-  { value: "normal", label: "Normal", detail: "Valid response · 0.6s" },
-  { value: "slow", label: "Slow response", detail: "4s response · 2s timeout" },
-  { value: "server", label: "Server error", detail: "Simulated failure · 0.6s" },
-  { value: "invalid", label: "Invalid data", detail: "Malformed response · 0.6s" },
-];
-export const failureMessages: Record<FailureReason, string> = {
-  timeout: "The request took too long and stopped after 2 seconds.",
-  server: "The simulated server could not complete the request.",
-  invalid: "The response did not match the expected task format and was rejected.",
-};
+export const scenarios: readonly Scenario[] = ["normal", "slow", "server", "invalid"];
 export const initialState: LabState = { selected: "normal", request: { kind: "idle" }, tasks: null, events: [] };
 
 export function validateTasks(payload: unknown): Task[] | null {
@@ -49,18 +43,18 @@ export function rescueReducer(state: LabState, action: LabAction): LabState {
     case "select": return state.request.kind === "loading" ? state : { ...state, selected: action.scenario };
     case "start": return {
       ...state, request: { kind: "loading", id: action.id, scenario: action.scenario },
-      events: [...state.events, `Request ${action.id} started (${action.scenario}).`].slice(-6),
+      events: [...state.events, { kind: "started", id: action.id, scenario: action.scenario } satisfies LabEvent].slice(-6),
     };
     case "finish": {
       if (state.request.kind !== "loading" || state.request.id !== action.id || action.result.kind === "cancelled") return state;
       if (action.result.kind === "success") return {
         ...state, request: { kind: "success", id: action.id }, tasks: action.result.tasks,
-        events: [...state.events, `Request ${action.id} succeeded. Response validated.`].slice(-6),
+        events: [...state.events, { kind: "succeeded", id: action.id } satisfies LabEvent].slice(-6),
       };
       return {
         ...state,
         request: { kind: "failure", id: action.id, scenario: state.request.scenario, reason: action.result.reason },
-        events: [...state.events, `Request ${action.id} failed (${action.result.reason}). ${state.tasks ? "Previous data preserved." : "No data loaded."}`].slice(-6),
+        events: [...state.events, { kind: "failed", id: action.id, reason: action.result.reason, hadData: state.tasks !== null } satisfies LabEvent].slice(-6),
       };
     }
     default: { const exhaustive: never = action; return exhaustive; }

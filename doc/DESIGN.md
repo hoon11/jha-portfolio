@@ -7,7 +7,7 @@
 - 2026-10-01. 현재 UI와 동작을 기준으로 공개 설계를 정리했다.
 - 2026-10-02. 영어·일본어·한국어의 정적 언어 경로, 언어 선택 저장, 메타데이터와 Lab 번역 계약을 확정했다(ADR-0005).
 
-이 문서는 현재 포트폴리오의 단일 공개 설계 기준이다. 현재 동작은 앱 소스를 기준으로 설명한다. 시각 참고 이미지는 레이아웃과 스타일의 참고자료이며, 경력 사실이나 기능 요구사항의 출처가 아니다.
+이 문서는 포트폴리오의 의도한 동작을 정하는 단일 공개 설계 기준이다. 구현과 검증은 이 기준을 따른다. 시각 참고 이미지는 레이아웃과 스타일의 참고자료이며, 경력 사실이나 기능 요구사항의 출처가 아니다.
 
 ## 목표와 방문자
 
@@ -49,7 +49,7 @@ Hero 권장 문구는 다음과 같다.
 
 ## 기술 구조
 
-Next.js App Router와 TypeScript를 사용한다. 소개, 경력, 프로젝트 설명과 공통 레이아웃은 Server Component다. API Rescue Lab과 모바일 메뉴만 필요한 Client Component 경계를 가진다.
+Next.js App Router와 TypeScript를 사용한다. 소개, 경력, 프로젝트 설명과 공통 레이아웃은 Server Component다. API Rescue Lab, 모바일 메뉴와 언어 선택만 필요한 Client Component 경계를 가진다.
 
 콘텐츠는 정적이다. 데모는 브라우저 내부에서 실행되며 Route Handler, Server Action, 인증, 데이터베이스, 실제 HTTP API를 사용하지 않는다.
 
@@ -88,11 +88,11 @@ How I Work의 Understand, Reproduce, Fix, Verify 설명은 Home의 About 안에 
 
 ## 내비게이션
 
-Desktop에서는 왼쪽 sidebar에 Home, Work, Lab, About, Contact를 둔다. Work는 `/work`, Lab은 `/lab`, About과 Contact는 Home의 `/#about`, `/#contact`로 연결한다. Lab 상세의 돌아가기 링크는 `/lab`로 연결한다.
+Desktop에서는 왼쪽 sidebar에 Home, Work, Lab, About, Contact를 둔다. 내부 링크는 현재 언어의 `/{locale}/work`, `/{locale}/lab`, `/{locale}#about`, `/{locale}#contact`로 연결한다. Lab 상세의 돌아가기 링크도 현재 언어의 Lab으로 연결한다. 비언어 경로는 외부의 기존 링크를 위한 진입 별칭이다.
 
 Desktop sidebar의 Approach는 `Understand · Reproduce · Fix · Verify`만 보조적으로 표시한다. Home의 단계별 설명을 sidebar에 중복하지 않는다.
 
-경로에 따라 활성 항목을 표시한다. `/`에서는 Home, `/work`에서는 Work, `/lab`과 `/lab/api-rescue-lab`에서는 Lab을 활성화한다. Home에서 About이나 Contact 링크를 선택하면 해당 항목을 현재 위치로 표시한다. Home을 스크롤하는 동안 활성 구역을 계속 추적하는 기능은 선택적 다듬기 항목이며 MVP 필수 조건이 아니다.
+경로에 따라 활성 항목을 표시한다. 언어 접두사를 제외한 페이지 경로가 Home, Work 또는 Lab인지 판단한다. Home에서 About이나 Contact 링크를 선택하면 해당 항목을 현재 위치로 표시한다. Home을 스크롤하는 동안 활성 구역을 계속 추적하는 기능은 선택적 다듬기 항목이며 필수 조건이 아니다.
 
 Tablet에서는 상단 전체 메뉴만 사용한다. 전체 메뉴와 햄버거를 동시에 표시하지 않는다. Mobile에서는 작은 헤더와 메뉴 버튼을 사용한다. 메뉴 버튼에는 접근 가능한 이름, `aria-expanded`, `aria-controls`를 제공한다. Enter와 Space로 열고 닫으며, Escape로 닫을 때 버튼으로 포커스를 돌린다. 링크를 선택하면 메뉴를 닫고 이동한다. 닫힌 메뉴의 링크는 키보드 탐색에서 빠진다. 중요한 정보와 액션은 hover 없이 보인다.
 
@@ -110,7 +110,7 @@ Tablet에서는 상단 전체 메뉴만 사용한다. 전체 메뉴와 햄버거
 | 768px부터 1199px | 상단 전체 메뉴를 사용한다. 큰 영역과 Lab의 조작부·결과를 필요에 따라 세로로 배치하고 장식을 줄인다. |
 | 767px 이하 | 작은 헤더와 메뉴 버튼을 사용한다. 모든 주요 콘텐츠와 Lab을 한 열로 배치한다. |
 
-1280px, 1024px, 768px, 390px, 320px에서 실제 영문 경력 문구와 Lab 상태를 넣고 확인한다. 화면 폭이 줄면 장식과 여백부터 줄인다. 역할, 기간, 경력 설명, 데이터, 상태 메시지를 삭제하거나 placeholder 막대로 바꾸지 않는다. 긴 제목과 링크는 줄바꿈하며 페이지 가로 스크롤을 만들지 않는다. 보조 설명과 이벤트 로그를 지나치게 작게 줄이지 않는다. 중요한 모바일 액션의 터치 영역은 약 44px를 목표로 한다.
+1280px, 1024px, 768px, 390px, 320px에서 실제 영어·일본어·한국어 경력 문구와 Lab 상태를 넣고 확인한다. 화면 폭이 줄면 장식과 여백부터 줄인다. 역할, 기간, 경력 설명, 데이터, 상태 메시지를 삭제하거나 placeholder 막대로 바꾸지 않는다. 긴 제목과 링크는 줄바꿈하며 페이지 가로 스크롤을 만들지 않는다. 보조 설명과 이벤트 로그를 지나치게 작게 줄이지 않는다. 중요한 모바일 액션의 터치 영역은 약 44px를 목표로 한다.
 
 UI 텍스트와 컨트롤은 HTML로 구현한다. 목업 PNG를 자르거나 통째로 넣어 화면을 구성하지 않는다. 별도 일러스트 자산이 있으면 장식으로만 사용하고 적절한 빈 대체 텍스트를 준다. 자산이 없다면 레이아웃, 글자, 색, 간격, 패널 스타일을 먼저 구현한다. 태블릿과 모바일에서는 반복되는 고양이와 장식을 줄인다.
 
@@ -194,7 +194,7 @@ Scenario는 네 가지 응답 조건 중 하나다. RequestState는 idle, loadin
 - `app/[locale]/work/page.tsx`는 회사별 전체 재직 이력과 그 아래의 `Selected Work`를 표시한다.
 - `app/[locale]/lab/page.tsx`는 실제 개인 프로젝트 목록을 표시한다.
 - `app/[locale]/lab/api-rescue-lab/page.tsx`는 짧은 문제 소개와 실행 안내, 기존 Lab 컴포넌트, 그 뒤의 `What this demonstrates`와 상세한 체험 순서를 HTML 순서대로 구성한다.
-- 작은 내비게이션 Client Component는 경로 활성 상태와 모바일 메뉴 열림 상태만 관리한다. Lab 상태에 접근하지 않는다.
+- 작은 내비게이션 Client Component는 경로 활성 상태, 모바일 메뉴, 언어 선택 저장과 문서 이동을 담당한다. Lab 상태에 접근하지 않는다.
 - 경력 카드와 프로젝트 카드는 실제로 반복되는 표현만 공유한다. Work의 회사별 정보 계층은 별도로 구성하되 단순 전달용 컴포넌트를 쌓지 않는다.
 - `content/portfolio.ts`는 회사, 역할, 기간, 선정 사례 관계, 기술, 연락 링크의 공통 사실 출처다. `content/locales/`의 typed 언어 자료는 공개 문구와 표시 label을 관리한다. Server Component가 선택 언어를 읽고 필요한 내비게이션·Lab 문구만 Client Component로 전달한다. Home 선정 사례는 Work 정렬과 독립적이며 같은 프로젝트의 번역은 한 번만 관리한다.
 - `components/api-rescue-lab.tsx`는 기존 데모의 유일한 화면 상태와 요청 생명주기를 담당한다.
@@ -212,6 +212,8 @@ Scenario는 네 가지 응답 조건 중 하나다. RequestState는 idle, loadin
 필수 정보는 hover에 의존하지 않는다. 새 움직임을 넣는 경우에만 reduced-motion 설정을 반영한다. 각 너비에서 글자 크기, 대비, 터치 영역을 실제 UI로 확인한다. title, description, 기본 Open Graph 정보와 favicon은 공개 이름 규칙을 따른다.
 
 ## 검증 기준
+
+영어·일본어·한국어의 모든 페이지에서 직접 접속, 새로고침, 뒤로 가기, 언어 전환, 저장된 선택보다 명시적 URL 우선, Home 앵커와 서버 메타데이터를 확인한다. 언어 변경으로 Lab이 초기화되며 유지된 컴포넌트 상태를 다른 언어로 렌더링할 때 이벤트 의미가 동일한지도 확인한다. 영어 제목과 label 예시는 다른 언어에서 의미가 같은 번역으로 표시한다.
 
 Lab 테스트는 동작 보존의 기준이다. 변경 후 테스트, TypeScript typecheck, production build에서 다음 동작을 확인한다.
 

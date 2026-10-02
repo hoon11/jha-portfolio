@@ -3,19 +3,21 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import type { NavigationMessages } from "../content/navigation";
+import { isLocale, languageSwitchUrl, localePreferenceCookie, localizedPath, sitePathFromLocalized, type Locale } from "../lib/i18n";
 
 const links = [
-  { label: "Home", href: "/", key: "home" },
-  { label: "Work", href: "/work", key: "work" },
-  { label: "Lab", href: "/lab", key: "lab" },
-  { label: "About", href: "/#about", key: "about" },
-  { label: "Contact", href: "/#contact", key: "contact" },
+  { path: "/", hash: "", key: "home" },
+  { path: "/work", hash: "", key: "work" },
+  { path: "/lab", hash: "", key: "lab" },
+  { path: "/", hash: "#about", key: "about" },
+  { path: "/", hash: "#contact", key: "contact" },
 ] as const;
 
 type NavKey = (typeof links)[number]["key"];
 type HomeSection = "home" | "about" | "contact";
 
-export default function SiteNavigation() {
+export default function SiteNavigation({ locale, messages }: { locale: Locale; messages: NavigationMessages }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [homeSection, setHomeSection] = useState<HomeSection>("home");
@@ -52,35 +54,45 @@ export default function SiteNavigation() {
     return () => desktop.removeEventListener("change", closeAtDesktop);
   }, []);
 
-  const active: NavKey = pathname === "/work" ? "work" : pathname.startsWith("/lab") ? "lab" : homeSection;
+  const path = sitePathFromLocalized(pathname);
+  const active: NavKey = path === "/work" ? "work" : path?.startsWith("/lab") ? "lab" : homeSection;
+
+  function changeLanguage(value: string) {
+    if (!isLocale(value) || value === locale) return;
+    try { document.cookie = localePreferenceCookie(value, window.location.protocol === "https:"); } catch { /* Language URLs also work without preference storage. */ }
+    window.location.assign(languageSwitchUrl({ pathname, search: window.location.search, hash: window.location.hash, locale: value }));
+  }
 
   return <header className="site-header">
     <div className="brand-row">
-      <Link className="wordmark" href="/" onClick={() => { setOpen(false); setHomeSection("home"); }}>J. Ha<span>Frontend Engineer</span></Link>
+      <Link className="wordmark" href={localizedPath(locale)} onClick={() => { setOpen(false); setHomeSection("home"); }}>J. Ha<span>{messages.profession}</span></Link>
       <button
         ref={buttonRef}
         className="menu-toggle"
         type="button"
-        aria-label={open ? "Close menu" : "Open menu"}
+        aria-label={open ? messages.close : messages.open}
         aria-controls="site-navigation-links"
         aria-expanded={open}
         onClick={() => setOpen((value) => !value)}
       ><span aria-hidden="true" className="menu-icon"><i /><i /><i /></span></button>
     </div>
-    <nav id="site-navigation-links" className="site-navigation" aria-label="Main navigation" data-open={open}>
+    <nav id="site-navigation-links" className="site-navigation" aria-label={messages.main} data-open={open}>
       {links.map((link) => <Link
         key={link.key}
-        href={link.href}
-        aria-current={active === link.key ? (link.key === "about" || link.key === "contact" || pathname === "/lab/api-rescue-lab" ? "location" : "page") : undefined}
+        href={localizedPath(locale, link.path) + link.hash}
+        aria-current={active === link.key ? (link.key === "about" || link.key === "contact" || path === "/lab/api-rescue-lab" ? "location" : "page") : undefined}
         onClick={() => {
           setOpen(false);
           if (link.key === "about" || link.key === "contact" || link.key === "home") setHomeSection(link.key);
         }}
-      >{link.label}</Link>)}
+      >{messages[link.key]}</Link>)}
     </nav>
+    <label className="language-selector"><span>{messages.language}</span><select value={locale} onChange={(event) => changeLanguage(event.target.value)}>
+      <option value="en" lang="en">English</option><option value="ja" lang="ja">日本語</option><option value="ko" lang="ko">한국어</option>
+    </select></label>
     <div className="sidebar-note" aria-hidden="true">
-      <span className="sidebar-note-title">Approach</span>
-      <span>Understand · Reproduce · Fix · Verify</span>
+      <span className="sidebar-note-title">{messages.approach}</span>
+      <span>{messages.steps}</span>
     </div>
   </header>;
 }
