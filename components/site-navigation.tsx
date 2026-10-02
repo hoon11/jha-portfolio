@@ -76,6 +76,14 @@ export default function SiteNavigation({ locale, messages }: { locale: Locale; m
         onClick={() => setOpen((value) => !value)}
       ><span aria-hidden="true" className="menu-icon"><i /><i /><i /></span></button>
     </div>
+    <label className="language-selector"><span className="language-selector-label">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true" focusable="false">
+        <circle cx="12" cy="12" r="9" /><ellipse cx="12" cy="12" rx="4" ry="9" /><path d="M3 12h18" />
+      </svg>
+      <span>{messages.language}</span>
+    </span><select value={locale} onChange={(event) => changeLanguage(event.target.value)}>
+      <option value="en" lang="en">English</option><option value="ja" lang="ja">日本語</option><option value="ko" lang="ko">한국어</option>
+    </select></label>
     <nav id="site-navigation-links" className="site-navigation" aria-label={messages.main} data-open={open}>
       {links.map((link) => <Link
         key={link.key}
@@ -87,9 +95,6 @@ export default function SiteNavigation({ locale, messages }: { locale: Locale; m
         }}
       >{messages[link.key]}</Link>)}
     </nav>
-    <label className="language-selector"><span>{messages.language}</span><select value={locale} onChange={(event) => changeLanguage(event.target.value)}>
-      <option value="en" lang="en">English</option><option value="ja" lang="ja">日本語</option><option value="ko" lang="ko">한국어</option>
-    </select></label>
     <div className="sidebar-note" aria-hidden="true">
       <span className="sidebar-note-title">{messages.approach}</span>
       <span>{messages.steps}</span>
