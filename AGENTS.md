@@ -7,3 +7,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
 <!-- END:nextjs-agent-rules -->
+
+## Repository decisions
+
+Before architectural or repository-wide changes, read the current [design specification](doc/DESIGN.md), the [ADR index](doc/adr/README.md), and relevant records. Treat Accepted ADRs as current constraints. If work introduces a durable decision, use Proposed while unresolved or Accepted when settled. If an Accepted decision changes, supersede it under [ADR-0001](doc/adr/0001-adopt-adr-process-and-format.md). Skip ADRs for routine implementation details.

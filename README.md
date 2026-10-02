@@ -13,6 +13,8 @@ Built with Next.js, React, TypeScript, and plain CSS. The pages and shared layou
 
 The [design specification](doc/DESIGN.md) is the canonical public reference for this portfolio. The [UI reference](doc/ui/README.md) records its visual rules, and the [production checklist](doc/PRODUCTION_CHECKLIST.md) covers release verification.
 
+The [architecture decisions](doc/adr/README.md) explain durable engineering choices and their trade-offs.
+
 ## Run locally
 
 Use Node.js 22 or later.
