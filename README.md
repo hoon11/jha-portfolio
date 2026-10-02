@@ -19,7 +19,7 @@ The [architecture decisions](doc/adr/README.md) explain durable engineering choi
 
 ## Run locally
 
-Use Node.js 22 or later.
+Use Node.js 24.x.
 
 ```sh
 npm install
@@ -59,4 +59,4 @@ Tests exercise the component with the actual simulator and fake timers, plus out
 
 Review shared facts in `content/portfolio.ts`, translations in `content/locales/`, contact links, and metadata before publishing. Keep private career notes and review captures out of the repository and deployment inputs.
 
-An operator can import the repository into Vercel, select the Next.js preset, use Node.js 22 or later, and deploy the project root. No environment variables are needed. Verify desktop and mobile layouts and all four lab scenarios on the preview before promoting it to production.
+An operator can import the repository into Vercel, select the Next.js preset, use Node.js 24.x, and deploy the project root. The package engine keeps builds and functions on this major while Vercel manages minor and patch updates. No environment variables are needed. Verify desktop and mobile layouts and all four lab scenarios on the preview before promoting it to production.
