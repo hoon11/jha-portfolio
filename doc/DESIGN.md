@@ -5,12 +5,13 @@
 - 2026-09-30. Next.js 포트폴리오 MVP와 API Rescue Lab의 최초 설계를 확정했다.
 - 2026-10-01. 네 개 경로, 전체 재직 이력, 반응형 내비게이션, Lab의 설명 순서를 반영했다.
 - 2026-10-01. 현재 UI와 동작을 기준으로 공개 설계를 정리했다.
+- 2026-10-02. 영어·일본어·한국어의 정적 언어 경로, 언어 선택 저장, 메타데이터와 Lab 번역 계약을 확정했다(ADR-0005).
 
 이 문서는 현재 포트폴리오의 단일 공개 설계 기준이다. 현재 동작은 앱 소스를 기준으로 설명한다. 시각 참고 이미지는 레이아웃과 스타일의 참고자료이며, 경력 사실이나 기능 요구사항의 출처가 아니다.
 
 ## 목표와 방문자
 
-영어 중심 개인 소개 사이트다. 실제 경력과 담당 가능한 업무를 전달하고, 인터랙티브 데모 하나로 frontend 문제 해결 방식을 보여준다.
+영어를 기본으로 영어·일본어·한국어를 지원하는 개인 소개 사이트다. 실제 경력과 담당 가능한 업무를 전달하고, 인터랙티브 데모 하나로 frontend 문제 해결 방식을 보여준다. 모든 언어의 회사, 역할, 기간, 책임, 기술과 사실 범위는 동일하다. 자연스러운 번역은 허용하지만 새로운 경력 주장은 추가하지 않는다.
 
 주요 방문자는 Upwork 클라이언트, 일본 프리랜서 에이전시, SaaS·Web·IoT 관련 회사, LinkedIn을 통해 방문하는 채용 담당자와 개발자다. 링크 하나로 소개, 경력, 데모, 연락 방법을 확인할 수 있어야 한다.
 
@@ -58,10 +59,16 @@ Next.js App Router와 TypeScript를 사용한다. 소개, 경력, 프로젝트 �
 
 | 경로 | 내용 |
 | --- | --- |
-| `/` | Hero, Selected Experience 미리보기, Featured Lab 미리보기, About & Skills, Contact 순서로 구성한다. |
-| `/work` | Professional Experience. 전체 재직 이력을 회사별로 표시하고 확인된 프로젝트와 업무를 해당 회사 아래에 배치한다. |
-| `/lab` | 실제 개인 프로젝트만 표시한다. 현재는 API Rescue Lab 한 건이다. |
-| `/lab/api-rescue-lab` | 프로젝트 설명과 기존 인터랙티브 데모를 표시한다. |
+| `/{locale}` | Hero, Selected Experience 미리보기, Featured Lab 미리보기, About & Skills, Contact 순서로 구성한다. |
+| `/{locale}/work` | Professional Experience. 전체 재직 이력을 회사별로 표시하고 확인된 프로젝트와 업무를 해당 회사 아래에 배치한다. |
+| `/{locale}/lab` | 실제 개인 프로젝트만 표시한다. 현재는 API Rescue Lab 한 건이다. |
+| `/{locale}/lab/api-rescue-lab` | 프로젝트 설명과 기존 인터랙티브 데모를 표시한다. |
+
+`locale`은 `en`, `ja`, `ko`다. 영어도 `/en`을 사용한다. 기존 네 개 비언어 경로는 동일 페이지의 저장된 언어 또는 영어로 임시 리다이렉트한다. 명시적인 언어 URL은 저장된 선택보다 우선하며, 브라우저 언어로 자동 선택하지 않는다. 알 수 없는 언어 경로는 404다. 언어 선택은 언어 코드만 담은 1년 유효 first-party `portfolio-locale` cookie에 저장한다(Path=/, SameSite=Lax, HTTPS에서 Secure). 저장이 차단되어도 언어 URL로 이동할 수 있다. 선호 언어에 따른 리다이렉트는 공유 캐시에 저장하지 않는다.
+
+언어 변경은 현재 페이지, query와 Home의 `#about` 또는 `#contact`를 유지하는 문서 이동이다. Lab은 진행 중 요청을 취소하고 초기 상태로 다시 시작한다. 이 동작을 데모 옆에서 설명한다. Lab 상태는 언어 cookie에 저장하지 않는다.
+
+각 언어 페이지는 서버에서 정확한 `<html lang>`, title, description, Open Graph 문구와 URL을 생성한다. canonical은 해당 언어의 페이지이며 alternate는 en/ja/ko와 영어 x-default를 포함한다. canonical에 query나 fragment를 포함하지 않는다. 언어만 지원하므로 지역별 Open Graph locale은 임의로 지정하지 않는다.
 
 About과 Contact는 Home의 `#about`, `#contact` 구역이다. 별도 경로를 만들지 않는다. Home에는 API Rescue Lab 소개와 상세 페이지 링크만 두고, 조작 가능한 데모는 상세 페이지 한 곳에 둔다.
 
@@ -88,6 +95,8 @@ Desktop sidebar의 Approach는 `Understand · Reproduce · Fix · Verify`만 보
 경로에 따라 활성 항목을 표시한다. `/`에서는 Home, `/work`에서는 Work, `/lab`과 `/lab/api-rescue-lab`에서는 Lab을 활성화한다. Home에서 About이나 Contact 링크를 선택하면 해당 항목을 현재 위치로 표시한다. Home을 스크롤하는 동안 활성 구역을 계속 추적하는 기능은 선택적 다듬기 항목이며 MVP 필수 조건이 아니다.
 
 Tablet에서는 상단 전체 메뉴만 사용한다. 전체 메뉴와 햄버거를 동시에 표시하지 않는다. Mobile에서는 작은 헤더와 메뉴 버튼을 사용한다. 메뉴 버튼에는 접근 가능한 이름, `aria-expanded`, `aria-controls`를 제공한다. Enter와 Space로 열고 닫으며, Escape로 닫을 때 버튼으로 포커스를 돌린다. 링크를 선택하면 메뉴를 닫고 이동한다. 닫힌 메뉴의 링크는 키보드 탐색에서 빠진다. 중요한 정보와 액션은 hover 없이 보인다.
+
+언어 선택은 보이는 label이 있는 native select로 제공한다. 옵션은 English, 日本語, 한국어이며 선택 값 자체로 현재 언어를 표시한다. Desktop에서는 sidebar 메뉴 아래, Tablet에서는 브랜드와 같은 첫 행에 두고 전체 메뉴를 둘째 행에 둔다. Mobile에서는 브랜드/메뉴 버튼 행 아래에 두며 메뉴가 닫혀도 보인다. 키보드·포커스·터치 동작을 유지한다.
 
 ## 시각 방향과 반응형 규칙
 
@@ -162,7 +171,9 @@ Home 소개의 기준 문구는 `See how a frontend can stay useful when an API 
 - 이벤트 로그는 요청 식별자와 메시지를 포함하며 최근 여섯 개만 유지한다.
 - 로그 저장, 필터, 검색, 다운로드는 만들지 않는다.
 
-이벤트 문구 예시는 `Request started`, `Response rejected`, `Previous data preserved`, `Request succeeded`다.
+이벤트는 시작·성공·실패와 요청 식별자, 시나리오/원인, 이전 데이터 보유 여부를 언어 중립 데이터로 기록한다. 표시할 때 현재 언어로 변환한다. sample task ID와 검증용 상태는 유지하고 알려진 작업 제목·상태를 화면에서 번역한다. 언어 전환 시 Lab은 초기화되며 별도 저장소를 만들지 않는다.
+
+영어 이벤트 문구 예시는 `Request started`, `Response rejected`, `Previous data preserved`, `Request succeeded`다.
 
 ### 상태 모델과 책임
 
@@ -178,14 +189,14 @@ Scenario는 네 가지 응답 조건 중 하나다. RequestState는 idle, loadin
 
 현재 파일별 책임은 다음과 같다.
 
-- `app/layout.tsx`는 공통 문서 구조, skip link, 내비게이션, 본문, footer와 기본 메타데이터를 담당한다. 레이아웃은 Server Component로 유지한다.
-- `app/page.tsx`는 Home의 정적 구역을 구성한다.
-- `app/work/page.tsx`는 회사별 전체 재직 이력과 그 아래의 `Selected Work`를 표시한다.
-- `app/lab/page.tsx`는 실제 개인 프로젝트 목록을 표시한다.
-- `app/lab/api-rescue-lab/page.tsx`는 짧은 문제 소개와 실행 안내, 기존 Lab 컴포넌트, 그 뒤의 `What this demonstrates`와 상세한 체험 순서를 HTML 순서대로 구성한다.
+- `app/[locale]/layout.tsx`는 공통 문서 구조, skip link, 내비게이션, 본문, footer와 기본 메타데이터를 담당한다. 레이아웃은 Server Component로 유지한다.
+- `app/[locale]/page.tsx`는 Home의 정적 구역을 구성한다.
+- `app/[locale]/work/page.tsx`는 회사별 전체 재직 이력과 그 아래의 `Selected Work`를 표시한다.
+- `app/[locale]/lab/page.tsx`는 실제 개인 프로젝트 목록을 표시한다.
+- `app/[locale]/lab/api-rescue-lab/page.tsx`는 짧은 문제 소개와 실행 안내, 기존 Lab 컴포넌트, 그 뒤의 `What this demonstrates`와 상세한 체험 순서를 HTML 순서대로 구성한다.
 - 작은 내비게이션 Client Component는 경로 활성 상태와 모바일 메뉴 열림 상태만 관리한다. Lab 상태에 접근하지 않는다.
 - 경력 카드와 프로젝트 카드는 실제로 반복되는 표현만 공유한다. Work의 회사별 정보 계층은 별도로 구성하되 단순 전달용 컴포넌트를 쌓지 않는다.
-- `content/portfolio.ts`는 승인된 소개, 회사별 재직 이력, 선정 사례, 기술, 연락 링크의 정적 출처다. Home 선정 사례는 Work의 정렬과 독립적으로 명시하고, 같은 프로젝트 문구를 중복 보관하지 않는다. Lab 소개 문구도 실제 항목만 둔다.
+- `content/portfolio.ts`는 회사, 역할, 기간, 선정 사례 관계, 기술, 연락 링크의 공통 사실 출처다. `content/locales/`의 typed 언어 자료는 공개 문구와 표시 label을 관리한다. Server Component가 선택 언어를 읽고 필요한 내비게이션·Lab 문구만 Client Component로 전달한다. Home 선정 사례는 Work 정렬과 독립적이며 같은 프로젝트의 번역은 한 번만 관리한다.
 - `components/api-rescue-lab.tsx`는 기존 데모의 유일한 화면 상태와 요청 생명주기를 담당한다.
 - `lib/rescue-lab.ts`는 기존 시뮬레이션, 검증, 상태 전이를 담당한다.
 - `app/globals.css`는 색상 역할, 패널, 반응형 스타일을 담당한다.
@@ -224,7 +235,7 @@ Work에서 네 회사의 재직 기간과 `Selected Work` 소제목, 확인된 �
 - Next.js Route Handler, Server Action, 실제 HTTP endpoint, Axios, MSW.
 - AWS 배포와 실제 observability platform.
 - AI agent, LLM API, AI integration demo, 자동 버그 재현, GitHub issue parser.
-- CMS, 블로그, 다국어, 문의 폼, 다크 모드.
+- CMS, 블로그, 문의 폼, 다크 모드.
 - 빈 About·Contact 페이지, placeholder 프로젝트, 가짜 카드, 필터, 목적지 없는 상세 링크.
 - 별도 Playwright regression demo와 광범위한 종단간 테스트 체계.
 - 자동 재시도, 지수 백오프, 요청 설정 패널, 여러 endpoint, 응답 JSON 편집기.

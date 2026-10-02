@@ -8,3 +8,4 @@ Read relevant Accepted ADRs before architectural or repository-wide work. Propos
 | [0002: Adopt issue lifecycle and verification policy](0002-adopt-issue-lifecycle-and-verification-policy.md) | Accepted | Define proportionate completion and evidence rules. |
 | [0003: Keep API Rescue Lab browser-local and deterministic](0003-keep-api-rescue-lab-browser-local-and-deterministic.md) | Accepted | Preserve reproducible frontend failure scenarios. |
 | [0004: Separate public artifacts from private working material](0004-separate-public-artifacts-from-private-working-material.md) | Accepted | Protect the public repository and deployment boundary. |
+| [0005: Use static locale routes and shared public facts](0005-use-static-locale-routes-and-shared-public-facts.md) | Accepted | Keep locale URLs, public facts, preference and metadata consistent. |
