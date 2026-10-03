@@ -46,8 +46,14 @@ const messages = {
   },
   detail: {
     back: "Back to Lab", eyebrow: "Personal project · Local simulation / sample data", introduction: "When a response is slow, fails, or contains bad data, users still need a clear status and any valid tasks they already loaded.", instruction: "Run Normal, try a failure, then run Normal again.", simulation: "Interactive simulation", simulator: "Interactive simulator", demonstrates: "What this demonstrates",
-    demonstrations: ["Reject malformed task responses through response/schema validation before display.", "Preserve previously loaded valid tasks during failures. If none have loaded, show an empty state.", "Prevent stale request completions from overwriting newer state.", "Explain timeouts and failures, then provide a predictable way to retry or recover."],
+    demonstrations: ["Reject malformed task responses through response/schema validation before display.", "Preserve previously loaded valid tasks during failures. If none have loaded, show an empty state.", "Prevent stale request completions from overwriting newer state, verified by reducer tests.", "Explain timeouts and failures, then provide a predictable way to retry or recover."],
     stepsTitle: "Try it in four steps", steps: ["Run Normal to load validated sample tasks.", "Run Invalid data or Server error. Notice the status and retained tasks.", "Run Slow response. Its 4-second response reaches a 2-second timeout.", "Select Normal and run again to recover."], retry: "Retry repeats the selected failure condition.",
+    evidence: {
+      title: "Source and test evidence",
+      observable: "Try loading, timeout, server error, invalid data, retained tasks, retry, and Normal recovery in the demo. Inspect the implementation and tests on GitHub below.",
+      tested: "Reducer tests verify that request IDs reject stale or out-of-order completions. This guarantee is tested in code, rather than through an overlapping-request demo scenario.",
+      uiSource: "Simulator UI source", logicSource: "Reducer, validation, and simulation source", componentTests: "Component behavior tests", reducerTests: "Out-of-order completion tests",
+    },
   },
 } satisfies Messages;
 

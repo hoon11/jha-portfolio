@@ -17,7 +17,11 @@ export type Messages = {
   };
   work: { eyebrow: string; title: string; introduction: string; employment: string; selectedWork: string; project: string; items: Record<WorkId, { title: string; description: string }> };
   lab: { eyebrow: string; title: string; introduction: string; projects: string; cardOverline: string; homeSummary: string; indexSummary: string; openProject: string };
-  detail: { back: string; eyebrow: string; introduction: string; instruction: string; simulation: string; simulator: string; demonstrates: string; demonstrations: string[]; stepsTitle: string; steps: string[]; retry: string };
+  detail: {
+    back: string; eyebrow: string; introduction: string; instruction: string; simulation: string; simulator: string;
+    demonstrates: string; demonstrations: string[]; stepsTitle: string; steps: string[]; retry: string;
+    evidence: { title: string; observable: string; tested: string; uiSource: string; logicSource: string; componentTests: string; reducerTests: string };
+  };
 };
 
 const resources = {

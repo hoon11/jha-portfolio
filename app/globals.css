@@ -150,6 +150,12 @@ button:disabled { cursor: wait; opacity: .68; }
 .demonstration-list li + li, .detail-aside li + li { margin-top: 7px; }
 .detail-aside { align-self: stretch; padding: 16px; border: 1px solid var(--border); border-radius: 8px; background: var(--blue); }
 .detail-aside h2 { font-size: 18px; }
+.implementation-evidence { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); }
+.implementation-evidence h2 { font-size: 22px; }
+.implementation-evidence p { margin-top: 9px; color: var(--text-secondary); font-size: 14px; }
+.implementation-evidence ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 20px; margin: 14px 0 0; padding: 0; list-style: none; }
+.implementation-evidence a { display: grid; align-content: center; min-height: 44px; padding: 8px 0; font-size: 14px; overflow-wrap: anywhere; }
+.implementation-evidence code { font: 12px/1.6 var(--mono); }
 
 .lab-shell { overflow: hidden; border: 1px solid #aecac6; border-radius: 9px; background: var(--surface); }
 .lab-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 46px; padding: 10px 19px; border-bottom: 1px solid var(--border); background: #eaf4f3; color: var(--text-secondary); font-size: 13px; }
@@ -232,6 +238,7 @@ button:disabled { cursor: wait; opacity: .68; }
   .lab-controls fieldset { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
   .scenario { margin: 0; }
   .detail-explanation { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .implementation-evidence ul { grid-template-columns: minmax(0, 1fr); }
 }
 
 @media (max-width: 767px) {

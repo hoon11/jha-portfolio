@@ -83,7 +83,7 @@ it.each(localeCases)("$locale does not invent baseline data and retry repeats bo
   expect(screen.getByRole("status")).toHaveTextContent(messages.status.success);
 });
 
-it.each(localeCases)("$locale times out, repeats timeout on retry, recovers, and ignores the late response", async ({ messages }) => {
+it.each(localeCases)("$locale times out, clears pending timers, repeats timeout on retry, and recovers", async ({ messages }) => {
   render(<ApiRescueLab messages={messages} />);
   select("slow");
   await run(1999);
