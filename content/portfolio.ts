@@ -29,7 +29,7 @@ export const portfolio = {
   employment: [
     { company: "Strike System", role: "Full-Stack Engineer", period: period(2023, 1, 2026, 4), selectedWork: ["redevelopment", "hvac", "existingBusiness"] },
     { company: "Creative Heroes", role: "Full-Stack Engineer", period: period(2022, 1, 2022, 12), selectedWork: ["webDevelopment"] },
-    { company: "KSK Analytics", role: "Frontend Engineer", period: period(2019, 1, 2021, 12), selectedWork: ["dataAnalytics", "platformMaintenance"] },
+    { company: "KSK Analytics", role: "Frontend Engineer", period: period(2019, 2, 2021, 12), selectedWork: ["dataAnalytics", "platformMaintenance"] },
     { company: "Kissco Japan", role: "Software Engineer", period: period(2017, 3, 2018, 12), selectedWork: ["systemMaintenance"] },
   ] satisfies { company: string; role: Role; period: Period; selectedWork: WorkId[] }[],
   labProject: { title: "API Rescue Lab", href: "/lab/api-rescue-lab", technologies: "React / TypeScript" },
