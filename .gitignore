@@ -9,7 +9,6 @@ doc/career-context.md
 doc/private/
 doc/review/
 doc/ui/*
-!doc/ui/README.md
 .vscode/
 .idea/
 .DS_Store
