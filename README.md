@@ -13,9 +13,7 @@ Built with Next.js, React, TypeScript, and plain CSS. The pages and shared layou
 
 Locales are English (`en`, the default), Japanese (`ja`), and Korean (`ko`). Existing unprefixed links redirect to the saved language or English. Explicit locale URLs take precedence over the preference cookie. Switching language keeps the page and Home anchors and restarts the local Lab. No additional localization dependency or backend is used.
 
-The [design specification](doc/DESIGN.md) is the canonical public reference for this portfolio. The [UI reference](doc/ui/README.md) records its visual rules, and the [production checklist](doc/PRODUCTION_CHECKLIST.md) covers release verification.
-
-The [architecture decisions](doc/adr/README.md) explain durable engineering choices and their trade-offs.
+The [documentation index](doc/README.md) links to the design specification, architecture decisions, and release verification checklist.
 
 ## Run locally
 

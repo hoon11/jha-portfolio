@@ -27,3 +27,11 @@ Follow ADR-0002 and the issue template. Register only incidental, verified defec
 Only the coordinating agent publishes. Review the exact outgoing content under ADR-0004 before publication, then re-fetch the saved title, body, and OPEN state and report the issue URL. Reconcile uncertain creation results before retrying. Add evidence comments to existing issues only when separately authorized.
 
 Registration does not approve implementation, priority, or broader auditing. Do not execute follow-ups or expand discovery beyond the authorized task. Improvement issues require separate explicit authorization.
+
+## Private career and communication context
+
+Before job-search work, recruiter replies, or career-related email and LinkedIn tasks, read the local [career context](doc/career-context.md) and [job-search communication context](doc/private/job-search-communication-context.md). The latter records work preferences, reply style, and dated conditions. Apply the user's latest instructions and check the current conversation before sending a reply.
+
+These files are private local material under ADR-0004. Keep their contents out of public repository artifacts and deployments. They may be absent in another checkout; do not invent missing facts or treat old conditions as confirmed current.
+
+Everything under `doc/private/`, including future files and nested directories, must remain local. Never stage, commit, or push these files. Do not force-add them or bypass the privacy hooks.
