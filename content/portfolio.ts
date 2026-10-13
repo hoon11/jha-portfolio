@@ -1,58 +1,54 @@
 ﻿import type { Locale } from "../lib/i18n";
 import type { Messages } from "./messages";
 
-type Month = { year: number; month: number };
-type Period = { start: Month; end: Month };
+type Period = { start: number; end: number };
 type Role = "Frontend Engineer" | "Full-Stack Engineer" | "Software Engineer";
 type WorkFact = { id: WorkId; period: Period | null; technologies: readonly string[] };
 export type WorkId = "dataAnalytics" | "hvac" | "existingBusiness" | "redevelopment" | "webDevelopment" | "platformMaintenance" | "systemMaintenance";
 
-const period = (startYear: number, startMonth: number, endYear: number, endMonth: number): Period => ({
-  start: { year: startYear, month: startMonth }, end: { year: endYear, month: endMonth },
-});
+const period = (start: number, end: number): Period => ({ start, end });
 
 export const portfolio = {
   name: "J. Ha",
-  email: "jhoonen@gmail.com",
-  linkedIn: "https://www.linkedin.com/in/jaehoon-ha-1a69b1142/",
   primaryRole: "Frontend Engineer",
   featured: ["dataAnalytics", "hvac"] satisfies WorkId[],
   work: {
     dataAnalytics: { id: "dataAnalytics", period: null, technologies: ["React", "TypeScript", "Data visualization"] },
-    hvac: { id: "hvac", period: period(2023, 4, 2024, 10), technologies: ["Angular", "Python", "AWS Lambda"] },
-    existingBusiness: { id: "existingBusiness", period: period(2023, 1, 2023, 3), technologies: ["JavaScript", "HTML", "CSS", "PL/SQL"] },
-    redevelopment: { id: "redevelopment", period: period(2024, 12, 2025, 10), technologies: [] },
+    hvac: { id: "hvac", period: period(2023, 2024), technologies: ["Angular", "Python", "AWS Lambda"] },
+    existingBusiness: { id: "existingBusiness", period: period(2023, 2023), technologies: ["JavaScript", "HTML", "CSS", "PL/SQL"] },
+    redevelopment: { id: "redevelopment", period: period(2024, 2025), technologies: ["JavaScript", "HTML", "CSS"] },
     webDevelopment: { id: "webDevelopment", period: null, technologies: ["AWS Amplify", "Serverless Framework"] },
     platformMaintenance: { id: "platformMaintenance", period: null, technologies: [] },
     systemMaintenance: { id: "systemMaintenance", period: null, technologies: [] },
   } satisfies Record<WorkId, WorkFact>,
   employment: [
-    { company: "Strike System", role: "Full-Stack Engineer", period: period(2023, 1, 2026, 4), selectedWork: ["redevelopment", "hvac", "existingBusiness"] },
-    { company: "Creative Heroes", role: "Full-Stack Engineer", period: period(2022, 1, 2022, 12), selectedWork: ["webDevelopment"] },
-    { company: "KSK Analytics", role: "Frontend Engineer", period: period(2019, 2, 2021, 12), selectedWork: ["dataAnalytics", "platformMaintenance"] },
-    { company: "Kissco Japan", role: "Software Engineer", period: period(2017, 3, 2018, 12), selectedWork: ["systemMaintenance"] },
-  ] satisfies { company: string; role: Role; period: Period; selectedWork: WorkId[] }[],
+    { id: "experience1", role: "Full-Stack Engineer", period: period(2023, 2026), selectedWork: ["redevelopment", "hvac", "existingBusiness"] },
+    { id: "experience2", role: "Full-Stack Engineer", period: period(2022, 2022), selectedWork: ["webDevelopment"] },
+    { id: "experience3", role: "Frontend Engineer", period: period(2019, 2021), selectedWork: ["dataAnalytics", "platformMaintenance"] },
+    { id: "experience4", role: "Software Engineer", period: period(2017, 2018), selectedWork: ["systemMaintenance"] },
+  ] as const satisfies readonly { id: string; role: Role; period: Period; selectedWork: readonly WorkId[] }[],
   labProject: { title: "API Rescue Lab", href: "/lab/api-rescue-lab", technologies: "React / TypeScript" },
   frontendSkills: "React, TypeScript, JavaScript, Angular, HTML, CSS",
   integrationSkills: "REST APIs, AWS Lambda, AWS Amplify, Serverless Framework, Python",
 };
 
 export function formatPeriod(value: Period, locale: Locale): string {
-  const month = (date: Month) => locale === "en"
-    ? `${date.year}/${String(date.month).padStart(2, "0")}`
-    : locale === "ja" ? `${date.year}年${date.month}月` : `${date.year}년 ${date.month}월`;
-  return `${month(value.start)} – ${month(value.end)}`;
+  const year = (value: number) => locale === "en" ? String(value) : locale === "ja" ? `${value}年` : `${value}년`;
+  return value.start === value.end ? year(value.start) : `${year(value.start)} – ${year(value.end)}`;
 }
 
+export type EmploymentId = typeof portfolio.employment[number]["id"];
+
 export type Experience = {
-  id: WorkId; company: string; role: string; dates: string;
+  id: WorkId; context: string; role: string; dates: string;
   title: string; description: string; technologies: string;
 };
 
 export function getPortfolio(messages: Messages, locale: Locale) {
   const technologies = (names: readonly string[]) => names.map((name) => name === "Data visualization" ? messages.technologyLabels.dataVisualization : name).join(" / ");
   const employment = portfolio.employment.map((job) => ({
-    company: job.company,
+    id: job.id,
+    context: messages.work.contexts[job.id],
     role: messages.roles[job.role],
     dates: formatPeriod(job.period, locale),
     selectedWork: job.selectedWork.map((id) => {
@@ -69,7 +65,7 @@ export function getPortfolio(messages: Messages, locale: Locale) {
     if (!job) throw new Error(`Featured work has no employer: ${id}`);
     const work: WorkFact = portfolio.work[id];
     return {
-      id, company: job.company, role: messages.roles[job.role],
+      id, context: messages.work.contexts[job.id], role: messages.roles[job.role],
       dates: formatPeriod(work.period ?? job.period, locale),
       ...messages.work.items[id], technologies: technologies(work.technologies),
     };

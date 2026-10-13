@@ -59,7 +59,6 @@ export default async function Home({ params }: Props) {
 
     <section id="contact" className="contact-panel" aria-labelledby="contact-title">
       <div><p className="eyebrow">{home.contactEyebrow}</p><h2 id="contact-title">{home.contactTitle}</h2><p>{home.contactText}</p></div>
-      <div className="contact-links"><a className="button button-primary" href={"mailto:" + portfolio.email}>{home.email} <span aria-hidden="true">↗</span></a><a className="button button-outline" href={portfolio.linkedIn}>LinkedIn <span aria-hidden="true">↗</span></a></div>
     </section>
   </>;
 }

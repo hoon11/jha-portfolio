@@ -1,13 +1,13 @@
 # J. Ha portfolio
 
-A frontend engineering portfolio with a complete professional employment history and API Rescue Lab, an interactive frontend reliability demonstration.
+A frontend engineering portfolio with selected professional work and API Rescue Lab, an interactive frontend reliability demonstration. Employer names, exact months, and direct personal contact or repository links are omitted under ADR-0006.
 
 Built with Next.js, React, TypeScript, and plain CSS. The pages and shared layout are Server Components. Navigation and the lab have separate, small Client Components. The site uses a local decorative SVG and no external fonts.
 
 | Route | Content |
 | --- | --- |
 | `/{locale}` | Introduction, two featured experiences, Lab preview, About, and Contact |
-| `/{locale}/work` | Four employers with role and employment dates, plus selected work under each |
+| `/{locale}/work` | Four work contexts with roles, employment year spans, and selected work |
 | `/{locale}/lab` | Real personal projects |
 | `/{locale}/lab/api-rescue-lab` | Project explanation and interactive local simulation |
 
@@ -55,6 +55,6 @@ Tests exercise the component with the actual simulator and fake timers, plus out
 
 ## Publishing
 
-Review shared facts in `content/portfolio.ts`, translations in `content/locales/`, contact links, and metadata before publishing. Keep private career notes and review captures out of the repository and deployment inputs.
+Review shared facts in `content/portfolio.ts`, translations in `content/locales/`, outbound links, and metadata before publishing. Keep private career notes and review captures out of the repository and deployment inputs. Exact career records remain private; the Contact section directs readers to the channel where the portfolio was shared. These omissions reduce direct identity links and do not erase existing public history.
 
 An operator can import the repository into Vercel, select the Next.js preset, use Node.js 24.x, and deploy the project root. The package engine keeps builds and functions on this major while Vercel manages minor and patch updates. No environment variables are needed. Verify desktop and mobile layouts and all four lab scenarios on the preview before promoting it to production.

@@ -19,12 +19,6 @@ export default async function ApiRescueLabPage({ params }: Props) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const { detail } = await getMessages(locale);
-  const evidenceLinks = [
-    { label: detail.evidence.uiSource, path: "components/api-rescue-lab.tsx" },
-    { label: detail.evidence.logicSource, path: "lib/rescue-lab.ts" },
-    { label: detail.evidence.componentTests, path: "components/api-rescue-lab.test.tsx" },
-    { label: detail.evidence.reducerTests, path: "lib/rescue-lab.test.ts" },
-  ];
 
   return <div className="inner-page lab-detail">
     <Link className="back-link" href={localizedPath(locale, "/lab")}><span aria-hidden="true">←</span> {detail.back}</Link>
@@ -39,9 +33,6 @@ export default async function ApiRescueLabPage({ params }: Props) {
       <section className="implementation-evidence" aria-labelledby="implementation-evidence-title">
         <h2 id="implementation-evidence-title">{detail.evidence.title}</h2>
         <p>{detail.evidence.observable}</p><p>{detail.evidence.tested}</p>
-        <ul>{evidenceLinks.map(({ label, path }) => <li key={path}>
-          <a href={`https://github.com/hoon11/jha-portfolio/blob/main/${path}`}>{label}<code>{path}</code></a>
-        </li>)}</ul>
       </section>
     </section>
   </div>;

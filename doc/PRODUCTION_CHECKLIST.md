@@ -30,7 +30,7 @@ Review the site as a visitor who has no background information.
 
 ### Information hierarchy
 
-- [ ] A visitor can find who the engineer is, professional experience, demonstrated technical strengths, and contact options.
+- [ ] A visitor can find the public initials, professional experience, demonstrated technical strengths, and the instruction to contact through the channel where the portfolio was shared.
 - [ ] Professional experience remains more prominent than decoration or the personal Lab project.
 - [ ] Home previews lead to the relevant Work and Lab pages.
 
@@ -44,10 +44,10 @@ Review the site as a visitor who has no background information.
 
 ### `/work`
 
-- [ ] All approved professional employment history appears under the correct employer.
-- [ ] Role and employment period are clear before each employer's Selected Work.
-- [ ] Employment periods and individual project periods remain distinct. Missing project dates are not inferred.
-- [ ] Responsibilities and technologies match approved public facts; approximately 150 refers to screens validated, not defects fixed.
+- [ ] All approved professional employment history appears under the correct generic work-context label, without named employers.
+- [ ] Role and employment year span are clear before each context's Selected Work.
+- [ ] Employment and individual project year spans remain distinct. Exact months are omitted and missing project dates are not inferred.
+- [ ] Responsibilities and technologies match approved public facts. Named low-code tools and unnecessary project-scale figures are omitted.
 - [ ] No private career detail, end-client name, or unsupported impact claim appears.
 
 ### Home
@@ -122,7 +122,7 @@ Check the live content and Lab states at every width below. Resize the viewport 
 Test Chrome on desktop and a mobile browser simulation. Record the browser version and viewport in the release evidence.
 
 - [ ] Pages render with the intended fonts, colors, panels, backgrounds, and illustrations.
-- [ ] Route links, Home anchors, mobile navigation, contact links, and Lab controls respond as expected.
+- [ ] Route links, Home anchors, mobile navigation, and Lab controls respond as expected. The Contact section gives the existing-channel instruction without personal contact links.
 - [ ] The browser console has no unexplained errors or warnings during navigation and Lab interactions.
 - [ ] Network requests show no missing page assets or unexpected external service dependency.
 
@@ -142,6 +142,7 @@ Lighthouse and Core Web Vitals can be recorded for future comparisons. Do not in
 - [ ] No server-only value is exposed through client code, page HTML, network responses, or public assets.
 - [ ] Private documents, local review captures, and build artifacts are absent from the public repository and deployment output.
 - [ ] Visible copy, metadata, screenshots, and links disclose no personal information beyond approved public content.
+- [ ] Current public facts, generated HTML, and bundles contain no removed employer names, personal email or profile/repository destinations. Exact months are absent from displayed career periods. Prior public history is assessed separately and is not claimed erased.
 - [ ] The Lab uses sample task data and makes no real API or customer-data request.
 
 ## 10. Final release checklist

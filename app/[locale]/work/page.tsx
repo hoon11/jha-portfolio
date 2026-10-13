@@ -25,9 +25,9 @@ export default async function WorkPage({ params }: Props) {
       <p>{messages.work.introduction}</p>
     </header>
     <div className="employment-list">
-      {employment.map((job, index) => <section className="content-panel employment-panel" key={job.company} aria-labelledby={`employer-${index}`}>
+      {employment.map((job, index) => <section className="content-panel employment-panel" key={job.id} aria-labelledby={`employer-${index}`}>
         <div className="employment-heading">
-          <div><h2 id={`employer-${index}`}>{job.company}</h2><p className="employment-role">{job.role}</p></div>
+          <div><h2 id={`employer-${index}`}>{job.context}</h2><p className="employment-role">{job.role}</p></div>
           <p className="employment-dates"><span>{messages.work.employment}</span>{job.dates}</p>
         </div>
         <div className="selected-work">

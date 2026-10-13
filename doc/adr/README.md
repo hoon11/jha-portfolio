@@ -9,3 +9,4 @@ Read relevant Accepted ADRs before architectural or repository-wide work. Propos
 | [0003: Keep API Rescue Lab browser-local and deterministic](0003-keep-api-rescue-lab-browser-local-and-deterministic.md) | Accepted | Preserve reproducible frontend failure scenarios. |
 | [0004: Separate public artifacts from private working material](0004-separate-public-artifacts-from-private-working-material.md) | Accepted | Protect the public repository and deployment boundary. |
 | [0005: Use static locale routes and shared public facts](0005-use-static-locale-routes-and-shared-public-facts.md) | Accepted | Keep locale URLs, public facts, preference and metadata consistent. |
+| [0006: Reduce identity links in the public portfolio](0006-reduce-identity-links-in-public-portfolio.md) | Accepted | Keep useful work examples while omitting employer names, exact months, and direct identity links. |

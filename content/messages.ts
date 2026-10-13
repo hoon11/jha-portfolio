@@ -1,5 +1,5 @@
 import type { Locale } from "../lib/i18n";
-import type { WorkId } from "./portfolio";
+import type { EmploymentId, WorkId } from "./portfolio";
 
 type PageCopy = { title: string; description: string };
 export type Messages = {
@@ -13,14 +13,14 @@ export type Messages = {
     aboutEyebrow: string; aboutTitle: string; about: string; portfolioStack: string;
     skills: { frontend: string; integration: string; practice: string; practiceItems: string };
     workflowTitle: string; workflow: { title: string; text: string }[];
-    contactEyebrow: string; contactTitle: string; contactText: string; email: string;
+    contactEyebrow: string; contactTitle: string; contactText: string;
   };
-  work: { eyebrow: string; title: string; introduction: string; employment: string; selectedWork: string; project: string; items: Record<WorkId, { title: string; description: string }> };
+  work: { eyebrow: string; title: string; introduction: string; employment: string; selectedWork: string; project: string; contexts: Record<EmploymentId, string>; items: Record<WorkId, { title: string; description: string }> };
   lab: { eyebrow: string; title: string; introduction: string; projects: string; cardOverline: string; homeSummary: string; indexSummary: string; openProject: string };
   detail: {
     back: string; eyebrow: string; introduction: string; instruction: string; simulation: string; simulator: string;
     demonstrates: string; demonstrations: string[]; stepsTitle: string; steps: string[]; retry: string;
-    evidence: { title: string; observable: string; tested: string; uiSource: string; logicSource: string; componentTests: string; reducerTests: string };
+    evidence: { title: string; observable: string; tested: string };
   };
 };
 
