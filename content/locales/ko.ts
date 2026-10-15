@@ -18,7 +18,7 @@ const messages = {
     labEyebrow: "02 / 개인 프로젝트", labTitle: "주요 Lab", viewLab: "Lab 보기", aboutEyebrow: "03 / 소개", aboutTitle: "프론트엔드 중심 개발과 기존 시스템 경험.",
     about: "주로 일본에서 약 9년의 실무 경력을 쌓은 프론트엔드 중심 소프트웨어 엔지니어입니다. 기존 코드를 요구사항과 대조하고 화면 배치 처리와 업무 로직을 구분해 구현 방법을 검토합니다. JavaScript 배치 계산을 CSS로 바꿔 데스크톱·모바일·태블릿에 대응하고, JavaScript 프론트엔드 전체에 TypeScript를 도입해 빌드 단계에서 타입 오류를 찾도록 개선한 경험이 있습니다.",
     portfolioStack: "이 포트폴리오는 Next.js, React, TypeScript로 만들었습니다.",
-    skills: { frontend: "프론트엔드", integration: "연동 경험", practice: "개발 실무", practiceItems: "기존 애플리케이션 유지보수, 디버깅, 단위 테스트, 통합 테스트 지원, Git" },
+    skills: { frontend: "프론트엔드", integration: "연동 경험", practice: "개발 실무", practiceItems: "기존 애플리케이션 유지보수, 디버깅, 단위 테스트, 통합 테스트 지원, Git", certification: "보유 자격" },
     workflowTitle: "일하는 방식",
     workflow: [
       { title: "이해", text: "코드를 읽고 기존 동작을 따라갑니다." },
@@ -31,6 +31,11 @@ const messages = {
   work: {
     eyebrow: "실무 경력", title: "실무 경력", introduction: "프론트엔드 개발, 애플리케이션 유지보수와 결함 조사 경험을 업무 종류로 정리했습니다. 기간은 연도까지만 표시하고 회사명과 정확한 월은 공개하지 않습니다.", employment: "재직 기간", selectedWork: "주요 담당 업무", project: "프로젝트 기간",
     contexts: { experience1: "업무 웹 애플리케이션 개발", experience2: "서버리스 웹 개발", experience3: "데이터 분석 화면 개발", experience4: "업무 애플리케이션 유지보수" },
+    currentActivity: {
+      title: "휴양과 업무 복귀 준비",
+      careerBreak: "마지막 실무 프로젝트가 끝난 후 건강상의 이유로 휴양했습니다. 회사에는 이듬해까지 재직했습니다.",
+      preparation: "기술 학습과 개인 개발을 통해 업무 복귀를 준비하고 있습니다. React·TypeScript로 이 포트폴리오와 API Rescue Lab을 만들고, 아래 AWS 자격증을 취득했습니다.",
+    },
     items: {
       dataAnalytics: { title: "데이터 분석 플랫폼", description: "내부 데이터 과학자의 전처리 업무를 위한 React 인터랙티브 그래프 화면을 개발했습니다. 사용자 조작에 따라 표시가 바뀌도록 커스터마이징했고, 내부 사용자에게 데이터가 보기 좋아졌다는 평가를 받았습니다. 당시에는 실제 고객 없이 내부 사용·평가 단계였습니다. JavaScript로 작성된 프론트엔드 전체에 TypeScript를 도입해 빌드 단계에서 타입 오류를 발견하고 코드를 파악하기 쉽게 만들었습니다. 시계열 시각화 컴포넌트 개발과 BI 솔루션 커스터마이징도 담당했습니다." },
       hvac: { title: "공조 모니터링·관리 시스템", description: "Python·AWS Lambda 서비스와 연동하는 Angular 기반 공조 모니터링·관리 시스템을 개발하고 유지보수했습니다. Angular 프론트엔드를 업그레이드하고 모니터링 기능을 추가했으며, 장치와 관리 시스템 사이의 통신 프로토콜 문제를 해결했습니다." },

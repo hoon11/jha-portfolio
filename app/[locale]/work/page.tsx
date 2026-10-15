@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { getMessages } from "../../../content/messages";
-import { getPortfolio } from "../../../content/portfolio";
+import { formatPeriod, getPortfolio, portfolio } from "../../../content/portfolio";
 import { isLocale, pageMetadata } from "../../../lib/i18n";
 
 type Props = { params: Promise<{ locale: string }> };
@@ -25,6 +25,12 @@ export default async function WorkPage({ params }: Props) {
       <p>{messages.work.introduction}</p>
     </header>
     <div className="employment-list">
+      <section className="content-panel employment-panel" aria-labelledby="current-activity-title">
+        <h2 id="current-activity-title">{messages.work.currentActivity.title}</h2>
+        <p className="work-description"><strong>{formatPeriod(portfolio.careerBreak.period, locale)}</strong> · {messages.work.currentActivity.careerBreak}</p>
+        <p className="work-description"><strong>{formatPeriod(portfolio.returnPreparation.period, locale)}</strong> · {messages.work.currentActivity.preparation}</p>
+        <p className="technology-list">{portfolio.certification.name} ({portfolio.certification.year})</p>
+      </section>
       {employment.map((job, index) => <section className="content-panel employment-panel" key={job.id} aria-labelledby={`employer-${index}`}>
         <div className="employment-heading">
           <div><h2 id={`employer-${index}`}>{job.context}</h2><p className="employment-role">{job.role}</p></div>

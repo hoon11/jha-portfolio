@@ -30,6 +30,9 @@ export const portfolio = {
   labProject: { title: "API Rescue Lab", href: "/lab/api-rescue-lab", technologies: "React / TypeScript" },
   frontendSkills: "React, TypeScript, JavaScript, Angular, HTML, CSS",
   integrationSkills: "REST APIs, AWS Lambda, AWS Amplify, Serverless Framework, Python",
+  careerBreak: { period: period(2025, 2026) },
+  returnPreparation: { period: period(2026, 2026) },
+  certification: { name: "AWS Certified Solutions Architect - Associate", year: 2026 },
 };
 
 export function formatPeriod(value: Period, locale: Locale): string {

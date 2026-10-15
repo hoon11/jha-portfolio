@@ -18,7 +18,7 @@ const messages = {
     labEyebrow: "02 / 個人プロジェクト", labTitle: "注目のLab", viewLab: "Lab一覧へ", aboutEyebrow: "03 / 自己紹介", aboutTitle: "フロントエンドを中心に、既存システムにも対応。",
     about: "主に日本で約9年の実務経験を持つ、フロントエンドを中心としたソフトウェアエンジニアです。既存コードを要件と照合し、画面配置の処理と業務ロジックを区別して実装を考えます。JavaScriptの配置計算をCSSに置き換えてデスクトップ・モバイル・タブレットに対応した経験や、フロントエンド全体へのTypeScript導入でビルド段階の型エラー検出につなげた経験があります。",
     portfolioStack: "このポートフォリオはNext.js、React、TypeScriptで制作しています。",
-    skills: { frontend: "フロントエンド", integration: "連携・実装経験", practice: "開発実務", practiceItems: "既存アプリケーションの保守、不具合調査、単体テスト、結合テスト支援、Git" },
+    skills: { frontend: "フロントエンド", integration: "連携・実装経験", practice: "開発実務", practiceItems: "既存アプリケーションの保守、不具合調査、単体テスト、結合テスト支援、Git", certification: "保有資格" },
     workflowTitle: "仕事の進め方",
     workflow: [
       { title: "理解", text: "コードを読み、現在の動作を追います。" },
@@ -31,6 +31,11 @@ const messages = {
   work: {
     eyebrow: "職務経歴", title: "職務経歴", introduction: "フロントエンド開発、アプリケーション保守、不具合調査の経験を業務の種類でまとめています。期間は年単位で表示し、会社名と正確な月は公開していません。", employment: "在籍期間", selectedWork: "主な担当業務", project: "プロジェクト期間",
     contexts: { experience1: "業務Webアプリケーション開発", experience2: "サーバーレスWeb開発", experience3: "データ分析画面の開発", experience4: "業務アプリケーションの保守" },
+    currentActivity: {
+      title: "休養と業務復帰に向けた準備",
+      careerBreak: "直近の実務案件が終了した後、体調不良のため休養しました。会社には翌年まで在籍していました。",
+      preparation: "技術学習と個人開発を通じて業務復帰の準備をしています。React・TypeScriptを使ったこのポートフォリオとAPI Rescue Labを制作し、下記のAWS認定資格を取得しました。",
+    },
     items: {
       dataAnalytics: { title: "データ分析プラットフォーム", description: "社内データサイエンティストの前処理用に、Reactでインタラクティブなグラフ画面を開発しました。ユーザー操作に応じて表示を変えるようカスタマイズし、社内利用者からデータが見やすくなったとの評価を受けました。当時は実顧客の利用はなく、社内での利用・評価段階でした。JavaScriptで書かれたフロントエンド全体にTypeScriptを導入し、ビルド段階での型エラー検出とコードの把握しやすさにつなげました。時系列可視化コンポーネントの開発とBIソリューションのカスタマイズも担当しました。" },
       hvac: { title: "空調監視・管理システム", description: "Python・AWS Lambdaのサービスと連携する、Angularベースの空調監視・管理システムを開発・保守しました。Angularフロントエンドのアップグレード、監視機能の追加、機器と管理システム間の通信プロトコルの不具合解決を担当しました。" },

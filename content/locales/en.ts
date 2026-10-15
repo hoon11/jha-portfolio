@@ -18,7 +18,7 @@ const messages = {
     labEyebrow: "02 / Personal project", labTitle: "Featured Lab", viewLab: "View Lab", aboutEyebrow: "03 / About", aboutTitle: "Frontend focus. Existing-system experience.",
     about: "I am a frontend-centered software engineer with around nine years of professional experience, primarily in Japan. I review existing code against the requirements and separate layout processing from business logic. My work includes replacing JavaScript layout calculations with CSS for desktop, mobile, and tablet screens, and introducing TypeScript across an entire JavaScript frontend to catch type errors at build time.",
     portfolioStack: "This portfolio is built with Next.js, React, and TypeScript.",
-    skills: { frontend: "Frontend", integration: "Integration experience", practice: "Engineering practice", practiceItems: "Existing application maintenance, debugging, unit testing, integration support, Git" },
+    skills: { frontend: "Frontend", integration: "Integration experience", practice: "Engineering practice", practiceItems: "Existing application maintenance, debugging, unit testing, integration support, Git", certification: "Certification" },
     workflowTitle: "How I work",
     workflow: [
       { title: "Understand", text: "Read the code and trace the existing behavior." },
@@ -31,6 +31,11 @@ const messages = {
   work: {
     eyebrow: "Professional work", title: "Professional Experience", introduction: "Frontend development, application maintenance, and defect investigation, grouped by work context. Dates are shown by year; employer names and exact months are omitted.", employment: "Employment", selectedWork: "Selected Work", project: "Project",
     contexts: { experience1: "Business application development", experience2: "Serverless web development", experience3: "Data analysis interfaces", experience4: "Business application maintenance" },
+    currentActivity: {
+      title: "Career break and return preparation",
+      careerBreak: "Took time off for health reasons after my last professional project ended. My employment continued until the following year.",
+      preparation: "Preparing to return to work through technical study and personal development, including this React/TypeScript portfolio and API Rescue Lab. Earned the AWS certification listed below.",
+    },
     items: {
       dataAnalytics: { title: "Data Analytics Platform", description: "Built interactive React graphs for internal data scientists doing data preprocessing. Customized the display to respond to user actions; an internal user said the data was easier to view. The platform was at an internal evaluation stage without actual customers. Introduced TypeScript across the entire JavaScript frontend to catch type errors at build time and make the code easier to understand. Also developed time-series visualization components and customized a BI solution." },
       hvac: { title: "HVAC Monitoring & Management System", description: "Developed and maintained an Angular-based HVAC monitoring and management system connected to Python and AWS Lambda services. Upgraded the Angular frontend, added monitoring functionality, and resolved communication-protocol issues between devices and the management system." },

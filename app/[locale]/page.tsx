@@ -25,6 +25,7 @@ export default async function Home({ params }: Props) {
     { title: home.skills.frontend, items: portfolio.frontendSkills },
     { title: home.skills.integration, items: portfolio.integrationSkills },
     { title: home.skills.practice, items: home.skills.practiceItems },
+    { title: home.skills.certification, items: `${portfolio.certification.name} (${portfolio.certification.year})` },
   ];
 
   return <>
