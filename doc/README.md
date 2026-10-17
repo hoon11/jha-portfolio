@@ -10,6 +10,10 @@
 | [Data operations requirements](data-operations-demo/REQUIREMENTS.md) | Public requirement source and feature-to-test mapping |
 | [Data operations test design](data-operations-demo/TEST-DESIGN.md) | Requirement-linked domain, interaction, tab and browser checks |
 | [Data operations verification](data-operations-demo/VERIFICATION.md) | Dated test, build and browser observations with limits |
+| [HVAC requirements](hvac-monitoring/REQUIREMENTS.md) | Separate service landing and sample monitoring scope |
+| [HVAC design](hvac-monitoring/DESIGN.md) | Shared building view, page selection and missing readings |
+| [HVAC test design](hvac-monitoring/TEST-DESIGN.md) | Requirement-linked interaction and browser checks |
+| [HVAC verification](hvac-monitoring/VERIFICATION.md) | Dated execution evidence and limits |
 | [Contributor instructions](../AGENTS.md) | Repository workflow and privacy rules |
 
 Update the design specification when intended behavior changes. Record durable decisions through the ADR process. Keep release observations separate from the specification.

@@ -47,7 +47,7 @@ const messages = {
     },
   },
   lab: {
-    eyebrow: "Personal projects", title: "Lab", introduction: "Explore frontend projects covering API error handling, order editing, and data visualization.", projects: "Projects", cardOverline: "Personal project · Local simulation / sample data",
+    eyebrow: "Personal projects", title: "Lab", introduction: "Explore frontend projects covering API error handling, data workflows, and an HVAC service concept.", projects: "Projects", cardOverline: "Personal project · Local simulation / sample data",
     homeSummary: "See how a frontend can stay useful when an API is slow, fails, or returns bad data.", indexSummary: "Try four response conditions in a local simulation with sample task data. See how the interface validates results, handles failure, and keeps previously loaded tasks visible when available.", openProject: "Open project",
   },
   detail: {

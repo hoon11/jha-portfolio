@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export type Locale = "en" | "ja" | "ko";
 export const locales: readonly Locale[] = ["en", "ja", "ko"];
 export const localeCookieName = "portfolio-locale";
-export const sitePaths = ["/", "/work", "/lab", "/lab/api-rescue-lab", "/lab/data-operations-demo"] as const;
+export const sitePaths = ["/", "/work", "/lab", "/lab/api-rescue-lab", "/lab/data-operations-demo", "/lab/hvac-monitoring", "/lab/hvac-monitoring/demo"] as const;
 export type SitePath = (typeof sitePaths)[number];
 export const productionOrigin = "https://jha-portfolio-eight.vercel.app";
 

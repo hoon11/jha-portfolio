@@ -3,6 +3,7 @@ import LabProjectCard from "../../../components/lab-project-card";
 import { getMessages } from "../../../content/messages";
 import { portfolio } from "../../../content/portfolio";
 import { dataOperationsMessages } from "../../../content/data-operations-messages";
+import { hvacMessages } from "../../../content/hvac-messages";
 import { isLocale, localizedPath, pageMetadata } from "../../../lib/i18n";
 
 type Props = { params: Promise<{ locale: string }> };
@@ -19,10 +20,12 @@ export default async function LabPage({ params }: Props) {
   if (!isLocale(locale)) notFound();
   const { lab } = await getMessages(locale);
   const project = dataOperationsMessages[locale];
+  const hvac = hvacMessages(locale);
 
   return <div className="inner-page">
     <header className="page-intro"><p className="eyebrow">{lab.eyebrow}</p><h1>{lab.title}</h1><p>{lab.introduction}</p></header>
     <section className="content-panel" aria-labelledby="projects-title"><h2 id="projects-title" className="sr-only">{lab.projects}</h2><LabProjectCard title={portfolio.labProject.title} technologies={portfolio.labProject.technologies} href={localizedPath(locale, "/lab/api-rescue-lab")} summary={lab.indexSummary} overline={lab.cardOverline} openProject={lab.openProject} /></section>
     <section className="content-panel"><LabProjectCard title={project.title} technologies="React / TypeScript" href={localizedPath(locale, "/lab/data-operations-demo")} summary={project.summary} overline={project.status} openProject={lab.openProject} /></section>
+    <section className="content-panel"><LabProjectCard title={hvac.title} technologies="Next.js / TypeScript / Recharts" href={localizedPath(locale, "/lab/hvac-monitoring")} summary={hvac.summary} overline="CONCEPT PROJECT" openProject={lab.openProject} /></section>
   </div>;
 }

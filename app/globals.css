@@ -23,6 +23,88 @@
 }
 
 * { box-sizing: border-box; }
+.hvac-project { --hvac-ink: #183e49; --hvac-teal: #16665f; --hvac-muted: #506970; --hvac-line: #c4d6d6; }
+.hvac-landing { color: var(--hvac-ink); }
+.hvac-hero { display: grid; grid-template-columns: 1fr 1.15fr; gap: 36px; padding: 38px 28px; background: #edf4f1; border-radius: 12px; align-items: center; }
+.hvac-kicker { display: block; font: 11px var(--mono); letter-spacing: .12em; color: #42696d; margin-bottom: 12px; }
+.project-document .hvac-hero h2 { font-size: clamp(27px, 3vw, 42px); line-height: 1.25; letter-spacing: -.035em; margin-bottom: 20px; }
+.hvac-hero-copy > p:not(.hvac-kicker) { line-height: 1.85; color: var(--hvac-muted); }
+.hvac-primary { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 12px 20px; margin-top: 23px; border-radius: 6px; background: #194e4b; color: #fff; font-size: 14px; text-decoration: none; font-weight: 600; }
+.hvac-primary:hover { background: #103f3b; text-decoration: underline; }
+.hvac-hero-copy .hvac-sample-note { font-size: 11px; margin-top: 17px; }
+.hvac-preview { min-width: 0; }
+.hvac-building { width: 100%; max-width: 490px; margin: 0 auto; padding: 16px 12px 0; }
+.hvac-roof { height: 27px; margin: 0 4px; background: #34545b; border-top: 6px solid #668084; border-radius: 4px 4px 0 0; position: relative; }
+.hvac-roof-equipment { position: absolute; height: 17px; width: 48px; background: repeating-linear-gradient(90deg,#8d9f9e 0 3px,#c0cdca 3px 7px); right: 26px; top: -22px; border: 2px solid #829793; }
+.hvac-floors { border-inline: 8px solid #34545b; margin-inline: 4px; }
+.hvac-floor { display: grid; grid-template-columns: 33px 1fr; min-height: 110px; border-bottom: 9px solid #45646a; background: #f9fcfa; }
+.hvac-floor-label { display: flex; align-items: center; justify-content: center; background: #e2ebe6; color: #415b61; font: 12px var(--mono); border-right: 1px solid #a7bebd; }
+.hvac-room { min-width: 0; position: relative; padding: 12px 12px 30px; display: flex; align-items: start; justify-content: space-between; gap: 8px; }
+.hvac-room > span { font-size: 11px; color: #486167; position: relative; z-index: 1; }
+.hvac-windows { position: absolute; inset: 14px auto auto 18%; display: flex; gap: 6px; opacity: .65; }
+.hvac-window { width: 20px; height: 31px; border: 2px solid #abc6cb; background: linear-gradient(125deg,#deeff0 50%,#c4e1e2 51%); }
+.hvac-furniture { position: absolute; bottom: 0; left: 20%; height: 27px; width: 80px; pointer-events: none; }
+.hvac-desk { position: absolute; width: 49px; height: 5px; background: #af987d; left: 12px; top: 8px; box-shadow: 0 10px 0 -1px #c8b8a0; }
+.hvac-chair { position: absolute; width: 14px; height: 16px; border: 3px solid #a4b6ab; top: 2px; left: 63px; border-radius: 4px 4px 0 0; }
+.hvac-furniture--lounge .hvac-desk { height: 16px; border-radius: 5px 5px 0 0; background: #aabca9; box-shadow: none; }
+.hvac-plant { position: absolute; left: 0; bottom: 0; width: 9px; height: 13px; background: #b7a78e; border-top: 10px solid #739b82; border-radius: 40% 40% 0 0; }
+.hvac-unit { position: relative; z-index: 2; display: grid; grid-template-columns: 20px auto; column-gap: 6px; min-width: 100px; min-height: 52px; padding: 6px 9px; border: 1px solid #a3bab8; border-radius: 5px; background: #fff; color: #294c52; text-align: left; cursor: pointer; font-size: 11px; box-shadow: 0 3px 7px #173e4910; }
+.hvac-unit.is-selected { border: 2px solid #21645e; padding: 5px 8px; background: #e6f5eb; box-shadow: 0 0 0 3px #bad9cb; }
+.hvac-unit-icon { grid-row: 1 / 3; align-self: center; width: 20px; height: 13px; border: 1px solid #78918e; border-bottom: 4px double #78918e; border-radius: 3px; }
+.hvac-unit-id { font: 11px var(--mono); font-weight: 700; }
+.hvac-unit-status { font-size: 10px; }
+.hvac-unit-selected { position: absolute; left: -7px; top: -8px; background: #21645e; color: white; border-radius: 50%; width: 17px; height: 17px; text-align: center; font-size: 12px; }
+.hvac-list-selected { color: #21645e; font-size: 12px; font-weight: 700; }
+.hvac-stale-notice { font-size: 12px; line-height: 1.8; margin-top: 15px; color: #795214; }
+.hvac-building-foundation { height: 12px; background: #b9c9c0; border-radius: 0 0 3px 3px; }
+.hvac-preview-hint { text-align: center; font-size: 12px; margin: 13px 0; color: #506970; }
+.hvac-preview-card { display: flex; justify-content: space-between; gap: 14px; background: #fff; border: 1px solid #c0d4cc; border-radius: 8px; padding: 16px 18px; box-shadow: 0 7px 18px #173e4908; }
+.hvac-preview-card > div { display: grid; gap: 4px; }
+.hvac-preview-card > div:last-child { text-align: right; }
+.hvac-preview-card span { font-size: 11px; color: #506970; }
+.hvac-preview-card .hvac-kicker { margin: 0; }
+.hvac-preview-card > div:last-child strong { font-size: 27px; font-variant-numeric: tabular-nums; }
+.hvac-reference { font: 11px var(--mono); color: #506970; margin-top: 13px; line-height: 1.7; }
+.hvac-stale, .hvac-badge--stale { color: #795214 !important; background: #fff1d2; }
+.hvac-benefits { padding: 48px 12px 35px; }
+.hvac-feature-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 25px; margin-top: 26px; }
+.hvac-feature-grid article { border-top: 1px solid #b9ceca; padding-top: 20px; }
+.hvac-step-number { font: 12px var(--mono); color: #527777; }
+.hvac-feature-grid h3 { font-size: 17px; margin: 12px 0 10px; }
+.hvac-feature-grid p, .hvac-flow li, .hvac-cta p { color: #506970; font-size: 14px; line-height: 1.85; }
+.hvac-flow { padding: 26px; background: #f2f5f0; border-radius: 9px; }
+.hvac-flow ol { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 28px; padding-left: 23px; margin: 18px 0 0; }
+.hvac-flow li { padding-left: 5px; }
+.hvac-cta { display: flex; align-items: center; justify-content: space-between; gap: 25px; padding: 35px 12px 15px; }
+.hvac-cta .hvac-primary { flex-shrink: 0; margin: 0; }
+.hvac-cta p { margin-top: 12px; }
+.hvac-monitor { display: grid; gap: 22px; min-width: 0; }
+.hvac-monitor h2 { font-size: 23px; }
+.hvac-monitor-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 10px; }
+.hvac-monitor-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 22px; min-width: 0; }
+.hvac-diagram-panel, .hvac-detail-panel, .hvac-device-list-panel, .hvac-trend-panel { min-width: 0; border: 1px solid #c4d6d6; border-radius: 10px; padding: 24px; background: #fffefa; }
+.hvac-diagram-panel { background: #edf4f1; }
+.hvac-detail-title { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; }
+.hvac-badge { display: inline-block; padding: 4px 9px; border-radius: 4px; font-size: 12px; }
+.hvac-badge--current { background: #e3f3e9; color: #176047; }
+.hvac-device-facts { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 21px 16px; margin: 25px 0 0; }
+.hvac-device-facts dt { font-size: 12px; color: #506970; margin-bottom: 6px; }
+.hvac-device-facts dd { margin: 0; font-size: 17px; font-weight: 600; }
+.hvac-device-list { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; margin-top: 18px; }
+.hvac-device-row { text-align: left; padding: 16px; border: 1px solid #bdd0cc; border-radius: 7px; background: #f8faf6; color: #183e49; min-height: 90px; display: grid; gap: 7px; cursor: pointer; }
+.hvac-device-row.is-selected { outline: 2px solid #21645e; outline-offset: 1px; background: #e6f5eb; }
+.hvac-device-row span { font-size: 12px; }
+.hvac-chart-canvas { width: 100%; min-width: 0; height: 280px; margin-top: 20px; }
+.hvac-trend-panel figure { margin: 0; }
+.hvac-values { margin-top: 16px; }
+.hvac-values summary { cursor: pointer; min-height: 44px; padding-top: 10px; text-decoration: underline; }
+.hvac-table-scroll { overflow-x: auto; max-width: 100%; }
+.hvac-values table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.hvac-values td, .hvac-values th { text-align: left; padding: 10px; border-bottom: 1px solid #c4d6d6; }
+.hvac-sample-note { font-size: 12px; color: #506970; line-height: 1.8; }
+.hvac-project button:focus-visible, .hvac-project a:focus-visible, .hvac-values summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
+@media (max-width: 1050px) { .hvac-hero { grid-template-columns: 1fr; gap: 35px; } .hvac-hero-copy { max-width: 62ch; } .hvac-preview { width: 100%; max-width: 490px; margin-inline: auto; } }
+@media (max-width: 700px) { .hvac-hero { padding: 26px 15px; } .hvac-feature-grid, .hvac-flow ol, .hvac-monitor-grid, .hvac-device-list { grid-template-columns: 1fr; } .hvac-feature-grid { gap: 22px; } .hvac-cta { flex-direction: column; align-items: stretch; } .hvac-diagram-panel, .hvac-detail-panel, .hvac-device-list-panel, .hvac-trend-panel { padding: 18px 12px; } .hvac-building { padding-inline: 0; } .hvac-room { padding-inline: 7px; } .hvac-floor { grid-template-columns: 25px 1fr; } .hvac-unit { min-width: 90px; padding-inline: 6px; } .hvac-unit.is-selected { padding-inline: 5px; } .hvac-preview-card { padding: 12px; } .hvac-preview-card > div:last-child strong { font-size: 23px; } .hvac-device-facts { gap: 18px 10px; } .hvac-flow { padding: 22px 18px; } }
 .project-tabs { display: flex; flex-wrap: wrap; gap: 6px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
 .project-tabs button { min-height: 44px; padding: 9px 15px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface); color: var(--text); }
 .project-tabs button[aria-selected="true"] { background: var(--primary-action); color: var(--action-text); border-color: var(--primary-action); text-decoration: underline; text-underline-offset: 4px; }

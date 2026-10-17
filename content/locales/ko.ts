@@ -47,7 +47,7 @@ const messages = {
     },
   },
   lab: {
-    eyebrow: "개인 프로젝트", title: "Lab", introduction: "API 오류 대응, 주문 데이터 편집과 데이터 시각화를 체험할 수 있는 프론트엔드 개인 프로젝트를 소개합니다.", projects: "프로젝트", cardOverline: "개인 프로젝트 · 로컬 시뮬레이션 / 샘플 데이터",
+    eyebrow: "개인 프로젝트", title: "Lab", introduction: "API 오류 대응, 데이터 처리, 공조 서비스 콘셉트를 체험할 수 있는 프론트엔드 개인 프로젝트를 소개합니다.", projects: "프로젝트", cardOverline: "개인 프로젝트 · 로컬 시뮬레이션 / 샘플 데이터",
     homeSummary: "API가 느리거나 실패하거나 잘못된 데이터를 반환할 때도 프론트엔드가 유용한 화면을 유지하는 모습을 확인하세요.", indexSummary: "샘플 작업 데이터를 사용하는 로컬 시뮬레이션에서 네 가지 응답 조건을 시험해 보세요. 응답을 검증하고 실패에 대응하며, 이전에 불러온 작업이 있으면 화면에 유지하는 동작을 확인할 수 있습니다.", openProject: "프로젝트 열기",
   },
   detail: {

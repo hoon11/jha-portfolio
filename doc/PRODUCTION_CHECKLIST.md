@@ -18,6 +18,15 @@ Record the production URL, deployed commit, date, browsers, and any failure evid
 | `/lab` | [ ] | [ ] | [ ] |
 | `/lab/api-rescue-lab` | [ ] | [ ] | [ ] |
 | `/{locale}/lab/data-operations-demo` | [ ] | [ ] | [ ] |
+| `/{locale}/lab/hvac-monitoring` | [ ] | [ ] | [ ] |
+| `/{locale}/lab/hvac-monitoring/demo` | [ ] | [ ] | [ ] |
+
+### HVAC concept
+
+- [ ] Landing CTAs open the separate demo; the landing contains only a small building preview, service explanation and document tabs.
+- [ ] Building and list selection update the same details and temperature history, without stealing focus.
+- [ ] Older data remains distinct from operating status. AC-301 shows the last received 13:00 values and gaps at 12:00 and 14:00 in both chart and table.
+- [ ] Three languages, keyboard controls, document state, page reset and 320px layout work with no page overflow.
 
 ### Data operations demo
 

@@ -11,6 +11,8 @@ Built with Next.js, React, TypeScript, and plain CSS. The pages and shared layou
 | `/{locale}/lab` | Personal projects with clearly marked sample-data boundaries |
 | `/{locale}/lab/api-rescue-lab` | Project explanation and interactive local simulation |
 | `/{locale}/lab/data-operations-demo` | Sample order filtering, editing, aggregation and Recharts visualization, with requirements, design and test design tabs |
+| `/{locale}/lab/hvac-monitoring` | HVAC concept landing, interactive building preview and project document tabs |
+| `/{locale}/lab/hvac-monitoring/demo` | Sample monitoring with synchronized building, unit list, details and temperature history |
 
 Locales are English (`en`, the default), Japanese (`ja`), and Korean (`ko`). Existing unprefixed links redirect to the saved language or English. Explicit locale URLs take precedence over the preference cookie. Switching language keeps the page and Home anchors and restarts the local Lab. No additional localization dependency or backend is used.
 

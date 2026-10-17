@@ -53,7 +53,7 @@ Hero 권장 문구는 다음과 같다.
 
 ## 기술 구조
 
-Next.js App Router와 TypeScript를 사용한다. 소개, 경력, 프로젝트 설명·문서 본문과 공통 레이아웃은 Server Component다. API Rescue Lab, 문서 탭 선택, 모바일 메뉴와 언어 선택만 필요한 Client Component 경계를 가진다.
+Next.js App Router와 TypeScript를 사용한다. 소개, 경력, 프로젝트 설명·문서 본문과 공통 레이아웃은 Server Component다. 인터랙티브 데모·공조 미리보기, 문서 탭 선택, 모바일 메뉴와 언어 선택은 필요한 Client Component 경계를 가진다.
 
 콘텐츠는 정적이다. 데모는 브라우저 내부에서 실행되며 Route Handler, Server Action, 인증, 데이터베이스, 실제 HTTP API를 사용하지 않는다.
 
@@ -65,9 +65,11 @@ Next.js App Router와 TypeScript를 사용한다. 소개, 경력, 프로젝트 �
 | --- | --- |
 | `/{locale}` | Hero, Selected Experience 미리보기, Featured Lab 미리보기, About & Skills, Contact 순서로 구성한다. |
 | `/{locale}/work` | Professional Experience. 전체 재직 이력을 업무 맥락으로 구분하고, 확인된 프로젝트와 업무를 해당 이력 아래에 배치한다. |
-| `/{locale}/lab` | API Rescue Lab과 데이터 운영 데모 카드를 표시한다. 두 프로젝트의 브라우저 내부 샘플 범위를 명시한다. |
+| `/{locale}/lab` | API Rescue Lab, 데이터 운영 데모, 공조 모니터링 콘셉트 카드를 표시한다. 각 프로젝트의 브라우저 내부 샘플 범위를 명시한다. |
 | `/{locale}/lab/api-rescue-lab` | 프로젝트 설명과 기존 인터랙티브 데모를 표시한다. |
 | `/{locale}/lab/data-operations-demo` | 주문 탐색·편집·집계·Recharts 그래프와 요구사항·설계·테스트 설계를 네 탭으로 표시한다. |
+| `/{locale}/lab/hvac-monitoring` | 서비스 소개 랜딩과 요구사항·설계·테스트 설계 탭. 단면도 선택은 공간·운전·온도의 작은 카드만 표시한다. |
+| `/{locale}/lab/hvac-monitoring/demo` | 별도 샘플 모니터링 화면. 단면도·목록·상세·Recharts 온도 추이는 선택 ID 하나를 공유한다. |
 
 `locale`은 `en`, `ja`, `ko`다. 영어도 `/en`을 사용한다. 기존 네 개 비언어 경로는 동일 페이지의 저장된 언어 또는 영어로 임시 리다이렉트한다. 명시적인 언어 URL은 저장된 선택보다 우선하며, 브라우저 언어로 자동 선택하지 않는다. 알 수 없는 언어 경로는 404다. 언어 선택은 언어 코드만 담은 1년 유효 first-party `portfolio-locale` cookie에 저장한다(Path=/, SameSite=Lax, HTTPS에서 Secure). 저장이 차단되어도 언어 URL로 이동할 수 있다. 선호 언어에 따른 리다이렉트는 공유 캐시에 저장하지 않는다.
 
