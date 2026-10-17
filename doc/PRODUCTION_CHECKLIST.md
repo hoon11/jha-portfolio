@@ -17,6 +17,16 @@ Record the production URL, deployed commit, date, browsers, and any failure evid
 | `/work` | [ ] | [ ] | [ ] |
 | `/lab` | [ ] | [ ] | [ ] |
 | `/lab/api-rescue-lab` | [ ] | [ ] | [ ] |
+| `/{locale}/lab/data-operations-demo` | [ ] | [ ] | [ ] |
+
+### Data operations demo
+
+- [ ] Demo, Requirements, Design and Test design tabs work in English, Japanese and Korean. The active tab is announced and supports arrows, Home and End.
+- [ ] Sample order filtering, sorting, amount/status editing and validation update the table, summary and both Recharts charts consistently.
+- [ ] Document-tab visits preserve edited data. Reload and language navigation restore the sample.
+- [ ] Chart data tables expose exact values. No results, no completed orders and completed zero-value orders remain distinguishable.
+- [ ] Saving an order outside its active filter announces the result and restores focus to the results heading.
+- [ ] At desktop and mobile widths the charts resize and page-wide horizontal overflow does not occur.
 
 ## 2. Core user experience review
 

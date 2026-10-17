@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export type Locale = "en" | "ja" | "ko";
 export const locales: readonly Locale[] = ["en", "ja", "ko"];
 export const localeCookieName = "portfolio-locale";
-export const sitePaths = ["/", "/work", "/lab", "/lab/api-rescue-lab"] as const;
+export const sitePaths = ["/", "/work", "/lab", "/lab/api-rescue-lab", "/lab/data-operations-demo"] as const;
 export type SitePath = (typeof sitePaths)[number];
 export const productionOrigin = "https://jha-portfolio-eight.vercel.app";
 
@@ -12,7 +12,7 @@ export function isLocale(value: unknown): value is Locale {
 }
 
 export function isSitePath(value: string): value is SitePath {
-  return value === "/" || value === "/work" || value === "/lab" || value === "/lab/api-rescue-lab";
+  return sitePaths.some((path) => path === value);
 }
 
 export function localizedPath(locale: Locale, path: SitePath = "/"): string {

@@ -8,8 +8,9 @@ Built with Next.js, React, TypeScript, and plain CSS. The pages and shared layou
 | --- | --- |
 | `/{locale}` | Introduction, two featured experiences, Lab preview, About, and Contact |
 | `/{locale}/work` | Four work contexts with roles, employment year spans, and selected work |
-| `/{locale}/lab` | Real personal projects |
+| `/{locale}/lab` | Personal projects with clearly marked sample-data boundaries |
 | `/{locale}/lab/api-rescue-lab` | Project explanation and interactive local simulation |
+| `/{locale}/lab/data-operations-demo` | Sample order filtering, editing, aggregation and Recharts visualization, with requirements, design and test design tabs |
 
 Locales are English (`en`, the default), Japanese (`ja`), and Korean (`ko`). Existing unprefixed links redirect to the saved language or English. Explicit locale URLs take precedence over the preference cookie. Switching language keeps the page and Home anchors and restarts the local Lab. No additional localization dependency or backend is used.
 

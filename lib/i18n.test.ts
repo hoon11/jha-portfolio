@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { isLocale, languageSwitchUrl, legacyDestination, localizedPath, localePreferenceCookie, pageMetadata, sitePathFromLocalized, locales, sitePaths } from "./i18n";
 
 describe("locale URLs and preference boundaries", () => {
-  it("maps all twelve routes without changing page identity", () => {
+  it("maps every localized route without changing page identity", () => {
     for (const locale of locales) for (const path of sitePaths) {
       expect(sitePathFromLocalized(localizedPath(locale, path))).toBe(path);
       expect(languageSwitchUrl({ pathname: localizedPath(locale, path), search: "?source=share", hash: "", locale: "ko" })).toBe(localizedPath("ko", path) + "?source=share");
@@ -12,7 +12,7 @@ describe("locale URLs and preference boundaries", () => {
     for (const hash of ["#about", "#contact"]) expect(languageSwitchUrl({ pathname: "/en", search: "", hash, locale: "ja" })).toBe(`/ja${hash}`);
     expect(languageSwitchUrl({ pathname: "/en/work", search: "", hash: "#contact", locale: "ja" })).toBe("/ja/work");
   });
-  it("uses preferences only for four legacy routes, with safe English fallback", () => {
+  it("uses preferences only for recognized legacy routes, with safe English fallback", () => {
     expect(legacyDestination("/work", "ko")).toBe("/ko/work");
     for (const value of [undefined, "fr", "../../private", "JA"]) expect(legacyDestination("/lab", value)).toBe("/en/lab");
     for (const path of ["/en", "/ja/work", "/icon.svg", "/lab/unknown", "/_next/static/foo"]) expect(legacyDestination(path, "ko")).toBeNull();

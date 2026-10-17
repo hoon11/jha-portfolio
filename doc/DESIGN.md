@@ -15,7 +15,7 @@
 
 ## 목표와 방문자
 
-영어를 기본으로 영어·일본어·한국어를 지원하는 개인 소개 사이트다. 실제 경력과 담당 가능한 업무를 전달하고, 인터랙티브 데모 하나로 frontend 문제 해결 방식을 보여준다. 모든 언어의 업무 맥락, 역할, 연도 범위, 책임, 기술과 사실 범위는 동일하다. 자연스러운 번역은 허용하지만 새로운 경력 주장은 추가하지 않는다.
+영어를 기본으로 영어·일본어·한국어를 지원하는 개인 소개 사이트다. 실제 경력과 담당 가능한 업무를 전달하고, API Rescue Lab과 데이터 운영 데모·설계 문서로 frontend 문제 해결과 설계 판단을 보여준다. 모든 언어의 업무 맥락, 역할, 연도 범위, 책임, 기술과 사실 범위는 동일하다. 자연스러운 번역은 허용하지만 새로운 경력 주장은 추가하지 않는다.
 
 주요 방문자는 Upwork 클라이언트, 일본 프리랜서 에이전시, SaaS·Web·IoT 관련 회사, LinkedIn을 통해 방문하는 채용 담당자와 개발자다. 링크 하나로 소개, 경력, 데모, 연락 방법을 확인할 수 있어야 한다.
 
@@ -53,7 +53,7 @@ Hero 권장 문구는 다음과 같다.
 
 ## 기술 구조
 
-Next.js App Router와 TypeScript를 사용한다. 소개, 경력, 프로젝트 설명과 공통 레이아웃은 Server Component다. API Rescue Lab, 모바일 메뉴와 언어 선택만 필요한 Client Component 경계를 가진다.
+Next.js App Router와 TypeScript를 사용한다. 소개, 경력, 프로젝트 설명·문서 본문과 공통 레이아웃은 Server Component다. API Rescue Lab, 문서 탭 선택, 모바일 메뉴와 언어 선택만 필요한 Client Component 경계를 가진다.
 
 콘텐츠는 정적이다. 데모는 브라우저 내부에서 실행되며 Route Handler, Server Action, 인증, 데이터베이스, 실제 HTTP API를 사용하지 않는다.
 
@@ -65,8 +65,9 @@ Next.js App Router와 TypeScript를 사용한다. 소개, 경력, 프로젝트 �
 | --- | --- |
 | `/{locale}` | Hero, Selected Experience 미리보기, Featured Lab 미리보기, About & Skills, Contact 순서로 구성한다. |
 | `/{locale}/work` | Professional Experience. 전체 재직 이력을 업무 맥락으로 구분하고, 확인된 프로젝트와 업무를 해당 이력 아래에 배치한다. |
-| `/{locale}/lab` | 실제 개인 프로젝트만 표시한다. 현재는 API Rescue Lab 한 건이다. |
+| `/{locale}/lab` | API Rescue Lab과 데이터 운영 데모 카드를 표시한다. 두 프로젝트의 브라우저 내부 샘플 범위를 명시한다. |
 | `/{locale}/lab/api-rescue-lab` | 프로젝트 설명과 기존 인터랙티브 데모를 표시한다. |
+| `/{locale}/lab/data-operations-demo` | 주문 탐색·편집·집계·Recharts 그래프와 요구사항·설계·테스트 설계를 네 탭으로 표시한다. |
 
 `locale`은 `en`, `ja`, `ko`다. 영어도 `/en`을 사용한다. 기존 네 개 비언어 경로는 동일 페이지의 저장된 언어 또는 영어로 임시 리다이렉트한다. 명시적인 언어 URL은 저장된 선택보다 우선하며, 브라우저 언어로 자동 선택하지 않는다. 알 수 없는 언어 경로는 404다. 언어 선택은 언어 코드만 담은 1년 유효 first-party `portfolio-locale` cookie에 저장한다(Path=/, SameSite=Lax, HTTPS에서 Secure). 저장이 차단되어도 언어 URL로 이동할 수 있다. 선호 언어에 따른 리다이렉트는 공유 캐시에 저장하지 않는다.
 
@@ -123,6 +124,8 @@ UI 텍스트와 컨트롤은 HTML로 구현한다. 목업 PNG를 자르거나 �
 창 형태 패널의 신호등 점과 테두리는 장식이다. 실제 동작이 없는 닫기 버튼이나 툴바 버튼을 표시하지 않는다. 페이지 이동과 실행은 알아볼 수 있는 링크와 버튼으로 제공한다.
 
 ## API Rescue Lab의 범위
+
+데이터 운영 데모의 구조와 설계 선택은 [별도 설계](data-operations-demo/DESIGN.md), 테스트와 요구사항 연결은 [테스트 설계](data-operations-demo/TEST-DESIGN.md)에 둔다. 공개 문서의 원본은 `content/data-operations-messages.ts`, 데모 UI 문구는 `content/data-operations-ui.ts`다. 기본 탭은 데모이며 문서 탭으로 이동해도 주문 상태를 유지한다. 언어 변경·새로고침 시 기본 탭과 샘플로 돌아간다. 문서 본문은 서버에서 렌더하며 비선택 패널은 숨긴다. 주문 상태·필터·편집은 독립된 Client Component가 소유하고 순수 함수가 표·요약·두 차트용 집계를 동일한 저장 데이터에서 도출한다. Recharts로 그래프를 그리고 동일 값의 표를 제공한다.
 
 API 장애 상황에서도 frontend가 상태를 설명하고 마지막 정상 데이터를 유지하는 방법을 보여준다. 프로젝트는 sample task 데이터를 사용하는 브라우저 내부 시뮬레이션이다. 실제 고객 데이터나 실제 backend를 사용하지 않는다.
 
