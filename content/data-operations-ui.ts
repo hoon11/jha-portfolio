@@ -2,7 +2,8 @@ import type { Locale } from "../lib/i18n";
 
 export const dataOperationsUi = {
   en: {
-    title: "Sample order workspace", intro: "Fictional orders. Changes stay in this page's memory and reset on reload.",
+    appliedFilters: "Applied filters", pendingFilters: "You have unapplied filter changes. Results still use the applied filters.", matches: "Matching orders", period: "Period", allDates: "All dates", noStart: "No start date", noEnd: "No end date", searchTerm: "Search",
+    title: "Sample order workspace", intro: "This demo uses sample order data. Reloading the page or switching languages resets your changes.",
     query: "Search orders or products", start: "Start date", end: "End date", status: "Status", category: "Category", all: "All", apply: "Apply filters", resetFilters: "Reset filters", resetSample: "Reset sample (discards edits)",
     filterError: "Check the dates: use valid dates with the start on or before the end. Previous results are still shown.",
     sort: "Sort orders", dateAsc: "Date: oldest first", dateDesc: "Date: newest first", amountAsc: "Amount: low to high", amountDesc: "Amount: high to low",
@@ -11,16 +12,18 @@ export const dataOperationsUi = {
     statuses: { pending: "Pending", completed: "Completed", cancelled: "Cancelled" }, categories: { stationery: "Stationery", home: "Home", accessories: "Accessories" },
   },
   ja: {
-    title: "サンプル注文の管理", intro: "架空の注文データです。変更はこの画面内だけで保持し、再読み込みで元に戻ります。",
-    query: "注文ID・商品名で検索", start: "開始日", end: "終了日", status: "状態", category: "カテゴリー", all: "すべて", apply: "絞り込みを適用", resetFilters: "絞り込みを解除", resetSample: "サンプルを初期化（編集を破棄）",
-    filterError: "日付を確認してください。開始日は終了日以前にしてください。直前の正常な結果を表示しています。",
+    appliedFilters: "適用中の条件", pendingFilters: "まだ適用していない条件があります。結果は適用中の条件で表示しています。", matches: "該当する注文数", period: "期間", allDates: "全期間", noStart: "開始日なし", noEnd: "終了日なし", searchTerm: "検索",
+    title: "サンプル注文の管理", intro: "サンプルの注文データです。再読み込みや表示言語の変更で、データは元に戻ります。",
+    query: "注文ID・商品名で検索", start: "開始日", end: "終了日", status: "状態", category: "カテゴリー", all: "すべて", apply: "絞り込みを適用", resetFilters: "絞り込みを解除", resetSample: "サンプルを初期化（変更を取り消す）",
+    filterError: "日付を確認してください。開始日は終了日と同じか、それより前にしてください。前回適用した条件の結果を表示しています。",
     sort: "注文の並び順", dateAsc: "日付：古い順", dateDesc: "日付：新しい順", amountAsc: "金額：低い順", amountDesc: "金額：高い順",
     results: "注文一覧", total: "注文数", completed: "完了注文数", revenue: "売上（円）", daily: "日別売上", byCategory: "カテゴリー別売上", values: "集計値を見る", date: "注文日", id: "注文ID", product: "商品名", amount: "金額（円）", action: "詳細", edit: "編集", editor: "注文の詳細", save: "変更を保存", cancel: "編集を取り消す",
-    editHint: "保存した変更だけが集計に反映されます。絞り込みの適用・解除で編集中の内容は破棄されます。", amountError: "0〜1,000,000の整数を、区切り文字なしで入力してください。", noResults: "条件に一致する注文はありません。", noCompleted: "一致する注文はありますが、完了注文がないため売上は0円です。", zeroRevenue: "完了注文はありますが、売上合計は0円です。", saved: "変更を保存しました。", excluded: "変更を保存しました。この注文は現在の条件から外れました。", cancelled: "編集内容を破棄しました。", filtered: "絞り込みを適用しました。編集中の内容は破棄しました。", filterReset: "絞り込みを解除しました。保存済みの変更は保持し、編集中の内容は破棄しました。", sampleReset: "元のサンプルに戻しました。絞り込み・並び順・編集を初期化しました。",
-    statuses: { pending: "保留", completed: "完了", cancelled: "キャンセル" }, categories: { stationery: "文房具", home: "生活用品", accessories: "アクセサリー" },
+    editHint: "保存した変更だけが集計に反映されます。絞り込みを適用・解除すると、保存していない変更は取り消されます。", amountError: "0〜1,000,000の整数を、カンマなしで入力してください。", noResults: "条件に一致する注文はありません。", noCompleted: "条件に一致する注文はありますが、完了した注文がないため売上は0円です。", zeroRevenue: "完了した注文はありますが、売上の合計は0円です。", saved: "変更を保存しました。", excluded: "変更を保存しました。この注文は現在の条件に一致しないため、一覧から外れました。", cancelled: "保存していない変更を取り消しました。", filtered: "絞り込みを適用しました。保存していない変更は取り消しました。", filterReset: "絞り込みを解除しました。保存した変更はそのまま残し、保存していない変更は取り消しました。", sampleReset: "元のサンプルに戻しました。絞り込み・並び順・変更内容を初期化しました。",
+    statuses: { pending: "処理待ち", completed: "完了", cancelled: "キャンセル" }, categories: { stationery: "文房具", home: "生活用品", accessories: "アクセサリー" },
   },
   ko: {
-    title: "샘플 주문 관리", intro: "가상의 주문 데이터입니다. 변경은 현재 화면 메모리에만 유지되며 새로고침하면 원본으로 돌아갑니다.",
+    appliedFilters: "적용 중인 조건", pendingFilters: "아직 적용하지 않은 조건이 있습니다. 결과는 적용 중인 조건으로 표시합니다.", matches: "조회된 주문 수", period: "기간", allDates: "전체 기간", noStart: "시작일 없음", noEnd: "종료일 없음", searchTerm: "검색",
+    title: "샘플 주문 관리", intro: "샘플 주문 데이터입니다. 새로고침하거나 표시 언어를 바꾸면 원래 데이터로 돌아갑니다.",
     query: "주문 ID·상품명 검색", start: "시작일", end: "종료일", status: "상태", category: "카테고리", all: "전체", apply: "필터 적용", resetFilters: "필터 초기화", resetSample: "샘플 초기화 (편집 내용 삭제)",
     filterError: "날짜를 확인하세요. 시작일은 종료일과 같거나 이전이어야 합니다. 마지막 정상 결과를 표시하고 있습니다.",
     sort: "주문 정렬", dateAsc: "날짜: 오래된 순", dateDesc: "날짜: 최신 순", amountAsc: "금액: 낮은 순", amountDesc: "금액: 높은 순",

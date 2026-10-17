@@ -18,7 +18,7 @@ const messages = {
     labEyebrow: "02 / Personal project", labTitle: "Featured Lab", viewLab: "View Lab", aboutEyebrow: "03 / About", aboutTitle: "Frontend focus. Existing-system experience.",
     about: "I am a frontend-centered software engineer with around nine years of professional experience, primarily in Japan. I review existing code against the requirements and separate layout processing from business logic. My work includes replacing JavaScript layout calculations with CSS for desktop, mobile, and tablet screens, and introducing TypeScript across an entire JavaScript frontend to catch type errors at build time.",
     portfolioStack: "This portfolio is built with Next.js, React, and TypeScript.",
-    skills: { frontend: "Frontend", integration: "Integration experience", practice: "Engineering practice", practiceItems: "Existing application maintenance, debugging, unit testing, integration support, Git", certification: "Certification" },
+    skills: { frontend: "Frontend", integration: "Integration experience", practice: "Engineering practice", practiceItems: "Existing application maintenance, debugging, unit testing, integration testing support, Git", certification: "Certification" },
     workflowTitle: "How I work",
     workflow: [
       { title: "Understand", text: "Read the code and trace the existing behavior." },
@@ -47,13 +47,13 @@ const messages = {
     },
   },
   lab: {
-    eyebrow: "Personal projects", title: "Lab", introduction: "Explore a working frontend simulation that handles slow, failed, and invalid responses while keeping its task view understandable.", projects: "Projects", cardOverline: "Personal project · Local simulation / sample data",
+    eyebrow: "Personal projects", title: "Lab", introduction: "Explore frontend projects covering API error handling, order editing, and data visualization.", projects: "Projects", cardOverline: "Personal project · Local simulation / sample data",
     homeSummary: "See how a frontend can stay useful when an API is slow, fails, or returns bad data.", indexSummary: "Try four response conditions in a local simulation with sample task data. See how the interface validates results, handles failure, and keeps previously loaded tasks visible when available.", openProject: "Open project",
   },
   detail: {
     back: "Back to Lab", eyebrow: "Personal project · Local simulation / sample data", introduction: "When a response is slow, fails, or contains bad data, users still need a clear status and any valid tasks they already loaded.", instruction: "Run Normal, try a failure, then run Normal again.", simulation: "Interactive simulation", simulator: "Interactive simulator", demonstrates: "What this demonstrates",
     demonstrations: ["Reject malformed task responses through response/schema validation before display.", "Preserve previously loaded valid tasks during failures. If none have loaded, show an empty state.", "Prevent stale request completions from overwriting newer state, verified by reducer tests.", "Explain timeouts and failures, then provide a predictable way to retry or recover."],
-    stepsTitle: "Try it in four steps", steps: ["Run Normal to load validated sample tasks.", "Run Invalid data or Server error. Notice the status and retained tasks.", "Run Slow response. Its 4-second response reaches a 2-second timeout.", "Select Normal and run again to recover."], retry: "Retry repeats the selected failure condition.",
+    stepsTitle: "Try it in four steps", steps: ["Run Normal to load validated sample tasks.", "Run Invalid data or Server error. Notice the status and retained tasks.", "Run Slow response. The response is set to arrive after 4 seconds, but the request times out after 2 seconds.", "Select Normal and run again to recover."], retry: "Retry repeats the selected failure condition.",
     evidence: {
       title: "Implementation checks",
       observable: "Try loading, timeout, server error, invalid data, retained tasks, retry, and Normal recovery in the demo.",

@@ -124,3 +124,57 @@ it("U09 combines search, inclusive dates, status and category; sort changes only
   expect(screen.getAllByRole("button", { name: /^Edit ORD-/ }).map((button) => button.getAttribute("aria-label"))).toEqual(["Edit ORD-007", "Edit ORD-001"]);
   expect(screen.getByTestId("chart-totals")).toHaveTextContent("2000 / 2000");
 });
+
+it("U10 keeps the applied summary and results unchanged until valid filters are applied", () => {
+  render(<DataOperationsDemo locale="en" />);
+  const summary = screen.getByRole("region", { name: "Applied filters" });
+  expect(summary).toHaveTextContent(`Matching orders: ${sampleOrders.length}`);
+  expect(summary).toHaveTextContent("All dates");
+  fireEvent.change(screen.getByRole("searchbox"), { target: { value: "ORD-003" } });
+  expect(screen.getByText(/You have unapplied filter changes/)).toBeInTheDocument();
+  expect(summary).not.toHaveTextContent("ORD-003");
+  expect(screen.getAllByRole("button", { name: /^Edit ORD-/ })).toHaveLength(sampleOrders.length);
+  fireEvent.click(screen.getByRole("button", { name: "Apply filters" }));
+  expect(summary).toHaveTextContent("Matching orders: 1");
+  expect(summary).toHaveTextContent("Search: “ORD-003”");
+  expect(screen.queryByText(/You have unapplied filter changes/)).not.toBeInTheDocument();
+  fireEvent.change(screen.getByLabelText("Start date"), { target: { value: "2026-10-10" } });
+  fireEvent.change(screen.getByLabelText("End date"), { target: { value: "2026-10-01" } });
+  fireEvent.click(screen.getByRole("button", { name: "Apply filters" }));
+  expect(screen.getByRole("alert")).toBeInTheDocument();
+  expect(summary).toHaveTextContent("All dates");
+  expect(summary).toHaveTextContent("Search: “ORD-003”");
+  expect(summary).not.toHaveTextContent("2026-10-10");
+  expect(screen.getByText(/You have unapplied filter changes/)).toBeInTheDocument();
+});
+
+it("U11 clears pending conditions on reversion and resets, and describes open date bounds", () => {
+  render(<DataOperationsDemo locale="en" />);
+  fireEvent.change(screen.getByRole("searchbox"), { target: { value: "Notebook" } });
+  fireEvent.change(screen.getByRole("searchbox"), { target: { value: "" } });
+  expect(screen.queryByText(/You have unapplied filter changes/)).not.toBeInTheDocument();
+  fireEvent.change(screen.getByLabelText("End date"), { target: { value: "2026-09-05" } });
+  fireEvent.click(screen.getByRole("button", { name: "Apply filters" }));
+  expect(screen.getByRole("region", { name: "Applied filters" })).toHaveTextContent("Period: No start date → 2026-09-05");
+  fireEvent.change(screen.getByLabelText("Status"), { target: { value: "pending" } });
+  fireEvent.click(screen.getByRole("button", { name: "Reset filters" }));
+  expect(screen.queryByText(/You have unapplied filter changes/)).not.toBeInTheDocument();
+  fireEvent.change(screen.getByRole("searchbox"), { target: { value: "Notebook" } });
+  fireEvent.click(screen.getByRole("button", { name: "Reset sample (discards edits)" }));
+  expect(screen.queryByText(/You have unapplied filter changes/)).not.toBeInTheDocument();
+});
+
+it("U12 places the labeled editor immediately after its selected order and moves it with selection", () => {
+  render(<DataOperationsDemo locale="en" />);
+  open("ORD-003");
+  const selectedRow = screen.getByRole("button", { name: "Edit ORD-003" }).closest("tr");
+  expect(selectedRow).toHaveAttribute("data-editing", "true");
+  expect(selectedRow?.nextElementSibling).toContainElement(editor());
+  expect(within(editor()).getByRole("textbox", { name: "Amount (JPY)" })).toHaveFocus();
+  open("ORD-001");
+  expect(selectedRow).toHaveAttribute("data-editing", "false");
+  expect(screen.getByRole("button", { name: "Edit ORD-001" }).closest("tr")?.nextElementSibling).toContainElement(editor());
+  expect(within(editor()).getByRole("textbox", { name: "Amount (JPY)" })).toHaveFocus();
+  fireEvent.click(screen.getByRole("button", { name: "Cancel editing" }));
+  expect(screen.getByRole("button", { name: "Edit ORD-001" })).toHaveFocus();
+});

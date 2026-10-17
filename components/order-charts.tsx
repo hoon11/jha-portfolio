@@ -22,8 +22,8 @@ function Values({ points, title, label, revenueLabel, valuesLabel, money }: {
 }) {
   return <details className="orders-chart-values"><summary>{valuesLabel}</summary>
     <div className="orders-table-scroll"><table><caption className="sr-only">{title}</caption>
-      <thead><tr><th scope="col">{label}</th><th scope="col">{revenueLabel}</th></tr></thead>
-      <tbody>{points.map((point) => <tr key={point.label}><th scope="row">{point.label}</th><td>{money(point.revenue)}</td></tr>)}</tbody>
+      <thead><tr><th scope="col">{label}</th><th scope="col" className="orders-number">{revenueLabel}</th></tr></thead>
+      <tbody>{points.map((point) => <tr key={point.label}><th scope="row">{point.label}</th><td className="orders-number">{money(point.revenue)}</td></tr>)}</tbody>
     </table></div>
   </details>;
 }
@@ -36,10 +36,10 @@ export default function OrderCharts({ daily, categories, dailyTitle, categoryTit
       <figcaption>{dailyTitle} <span>JPY</span></figcaption>
       {daily.length > 0 && <div className="orders-chart-canvas"><ResponsiveContainer width="100%" height={260} minWidth={0} initialDimension={{ width: 480, height: 260 }}>
         <LineChart data={[...daily]} margin={{ top: 12, right: 20, bottom: 10, left: 0 }} accessibilityLayer>
-          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="var(--border)" />
+          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="var(--border)" strokeOpacity={0.55} />
           <XAxis dataKey="label" tickFormatter={(value: string) => value.slice(5)} minTickGap={20} tick={{ fontSize: 12, fill: "var(--text-secondary)" }} />
           <YAxis tickFormatter={tick} width={48} tick={{ fontSize: 12, fill: "var(--text-secondary)" }} />
-          <Tooltip formatter={(value) => [money(Number(value)), revenueLabel]} />
+          <Tooltip formatter={(value) => [money(Number(value)), revenueLabel]} contentStyle={{ borderRadius: 8, borderColor: "var(--border)", background: "var(--surface)", color: "var(--text)" }} labelStyle={{ fontWeight: 600 }} cursor={{ stroke: "var(--border)", strokeDasharray: "3 3" }} />
           <Line type="linear" dataKey="revenue" name={revenueLabel} stroke="var(--primary-action)" strokeWidth={3} dot={{ r: 3 }} activeDot={{ r: 5 }} isAnimationActive={false} />
         </LineChart>
       </ResponsiveContainer></div>}
@@ -48,12 +48,12 @@ export default function OrderCharts({ daily, categories, dailyTitle, categoryTit
     <figure className="orders-chart" aria-label={categoryTitle}>
       <figcaption>{categoryTitle} <span>JPY</span></figcaption>
       {categories.length > 0 && <div className="orders-chart-canvas"><ResponsiveContainer width="100%" height={260} minWidth={0} initialDimension={{ width: 480, height: 260 }}>
-        <BarChart data={[...categories]} margin={{ top: 12, right: 20, bottom: 10, left: 0 }} accessibilityLayer>
-          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="var(--border)" />
-          <XAxis dataKey="label" tick={{ fontSize: 12, fill: "var(--text-secondary)" }} interval={0} />
-          <YAxis tickFormatter={tick} width={48} tick={{ fontSize: 12, fill: "var(--text-secondary)" }} />
-          <Tooltip formatter={(value) => [money(Number(value)), revenueLabel]} />
-          <Bar dataKey="revenue" name={revenueLabel} fill="var(--primary-action)" radius={[5, 5, 0, 0]} maxBarSize={72} isAnimationActive={false} />
+        <BarChart data={[...categories]} layout="vertical" margin={{ top: 12, right: 20, bottom: 10, left: 0 }} accessibilityLayer>
+          <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="var(--border)" strokeOpacity={0.55} />
+          <XAxis type="number" tickFormatter={tick} tick={{ fontSize: 12, fill: "var(--text-secondary)" }} />
+          <YAxis type="category" dataKey="label" width={88} tick={{ fontSize: 12, fill: "var(--text-secondary)" }} interval={0} />
+          <Tooltip formatter={(value) => [money(Number(value)), revenueLabel]} contentStyle={{ borderRadius: 8, borderColor: "var(--border)", background: "var(--surface)", color: "var(--text)" }} labelStyle={{ fontWeight: 600 }} cursor={{ fill: "var(--sage)", fillOpacity: 0.5 }} />
+          <Bar dataKey="revenue" name={revenueLabel} fill="var(--primary-action)" radius={[0, 5, 5, 0]} maxBarSize={44} isAnimationActive={false} />
         </BarChart>
       </ResponsiveContainer></div>}
       <Values points={categories} title={categoryTitle} label={categoryLabel} revenueLabel={revenueLabel} valuesLabel={valuesLabel} money={money} />
