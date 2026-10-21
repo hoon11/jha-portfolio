@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: Props) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const copy = hvacMessages(locale);
-  return pageMetadata(locale, "/lab/hvac-monitoring/demo", { title: `${copy.title} / Demo | J. Ha`, description: copy.sampleNotice });
+  return pageMetadata(locale, "/lab/hvac-monitoring/demo", { title: `${copy.title} / Demo | J. H.`, description: copy.sampleNotice });
 }
 export default async function HvacDemoPage({ params }: Props) {
   const { locale } = await params;

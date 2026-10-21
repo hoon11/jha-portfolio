@@ -1,4 +1,4 @@
-# J. Ha portfolio
+# J. H. portfolio
 
 A frontend engineering portfolio with selected professional work and API Rescue Lab, an interactive frontend reliability demonstration. Employer names, exact months, and direct personal contact or repository links are omitted under ADR-0006.
 

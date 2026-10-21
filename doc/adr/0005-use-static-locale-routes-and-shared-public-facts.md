@@ -40,8 +40,8 @@ Old links incur one redirect. Language switching resets Lab state in exchange fo
 
 ## References
 
-- [Issue #3](https://github.com/hoon11/jha-portfolio/issues/3)
-- [Verified production baseline](https://github.com/hoon11/jha-portfolio/issues/2#issuecomment-5948168773)
+- Issue #3: multilingual support.
+- Issue #2, comment 5948168773: verified production baseline.
 - [ADR-0003](0003-keep-api-rescue-lab-browser-local-and-deterministic.md)
 - [ADR-0004](0004-separate-public-artifacts-from-private-working-material.md)
 - [Design specification](../DESIGN.md)

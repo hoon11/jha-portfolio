@@ -2,16 +2,16 @@
 
 const messages = {
   technologyLabels: { dataVisualization: "データ可視化" },
-  shell: { skip: "本文へ移動", backToTop: "ページ上部へ", footer: "J. Ha · フロントエンドエンジニア", portfolio: "ポートフォリオ" },
+  shell: { skip: "本文へ移動", backToTop: "ページ上部へ", footer: "J. H. · フロントエンドエンジニア", portfolio: "ポートフォリオ" },
   roles: { "Frontend Engineer": "フロントエンドエンジニア", "Full-Stack Engineer": "フルスタックエンジニア", "Software Engineer": "ソフトウェアエンジニア" },
   metadata: {
-    home: { title: "J. Ha | フロントエンドエンジニア", description: "安定して使えるWebアプリケーションを目指すフロントエンドエンジニア。React、TypeScript、API連携、既存アプリケーションの保守に取り組みます。" },
-    work: { title: "職務経歴 | J. Ha", description: "フロントエンド開発、アプリケーション開発・保守、不具合調査の職務経歴。" },
-    lab: { title: "Lab | J. Ha", description: "J. Haのフロントエンド個人プロジェクト。" },
-    detail: { title: "API Rescue Lab | J. Ha", description: "応答の遅延、失敗、不正なデータに対処するフロントエンドの動作を、サンプルタスクのローカルシミュレーションで体験できます。" },
+    home: { title: "J. H. | フロントエンドエンジニア", description: "安定して使えるWebアプリケーションを目指すフロントエンドエンジニア。React、TypeScript、API連携、既存アプリケーションの保守に取り組みます。" },
+    work: { title: "職務経歴 | J. H.", description: "フロントエンド開発、アプリケーション開発・保守、不具合調査の職務経歴。" },
+    lab: { title: "Lab | J. H.", description: "J. H.のフロントエンド個人プロジェクト。" },
+    detail: { title: "API Rescue Lab | J. H.", description: "応答の遅延、失敗、不正なデータに対処するフロントエンドの動作を、サンプルタスクのローカルシミュレーションで体験できます。" },
   },
   home: {
-    greeting: "こんにちは、J. Haです · フロントエンドエンジニア",
+    greeting: "こんにちは、J. H.です · フロントエンドエンジニア",
     headline: "安定して使えるWebアプリケーションを目指すフロントエンドエンジニア。",
     introduction: "フロントエンドアプリケーションの開発、保守、不具合調査に取り組んでいます。React、TypeScript、API連携、AWS・サーバーレス環境、稼働中の既存コードベースでの経験があります。",
     viewWork: "職務経歴を見る", exploreLab: "Labを見る", workEyebrow: "01 / 職務経歴", experienceTitle: "主な開発経験", allWork: "すべての職務経歴を見る",

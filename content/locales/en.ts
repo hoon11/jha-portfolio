@@ -2,16 +2,16 @@
 
 const messages = {
   technologyLabels: { dataVisualization: "Data visualization" },
-  shell: { skip: "Skip to content", backToTop: "Back to top", footer: "J. Ha · Frontend Engineer", portfolio: "Portfolio" },
+  shell: { skip: "Skip to content", backToTop: "Back to top", footer: "J. H. · Frontend Engineer", portfolio: "Portfolio" },
   roles: { "Frontend Engineer": "Frontend Engineer", "Full-Stack Engineer": "Full-Stack Engineer", "Software Engineer": "Software Engineer" },
   metadata: {
-    home: { title: "J. Ha | Frontend Engineer", description: "Frontend engineer focused on reliable web applications. React, TypeScript, API integration, and existing application maintenance." },
-    work: { title: "Professional Experience | J. Ha", description: "Professional employment history in frontend engineering, application development, maintenance, and debugging." },
-    lab: { title: "Lab | J. Ha", description: "Personal frontend projects by J. Ha." },
-    detail: { title: "API Rescue Lab | J. Ha", description: "A local sample-task simulation showing how a frontend stays useful when responses are slow, fail, or contain invalid data." },
+    home: { title: "J. H. | Frontend Engineer", description: "Frontend engineer focused on reliable web applications. React, TypeScript, API integration, and existing application maintenance." },
+    work: { title: "Professional Experience | J. H.", description: "Professional employment history in frontend engineering, application development, maintenance, and debugging." },
+    lab: { title: "Lab | J. H.", description: "Personal frontend projects by J. H." },
+    detail: { title: "API Rescue Lab | J. H.", description: "A local sample-task simulation showing how a frontend stays useful when responses are slow, fail, or contain invalid data." },
   },
   home: {
-    greeting: "Hello, I'm J. Ha · Frontend Engineer",
+    greeting: "Hello, I'm J. H. · Frontend Engineer",
     headline: "Frontend Engineer focused on reliable web applications.",
     introduction: "I build, maintain, and debug frontend applications, with experience in React, TypeScript, API integration, AWS/serverless systems, and existing production codebases.",
     viewWork: "View my work", exploreLab: "Explore my Lab", workEyebrow: "01 / Professional work", experienceTitle: "Selected Experience", allWork: "View all work",
