@@ -5,7 +5,7 @@ import WorkPage from "../app/[locale]/work/page";
 import LabDetailPage from "../app/[locale]/lab/api-rescue-lab/page";
 import { getMessages } from "../content/messages";
 import { getPortfolio, portfolio } from "../content/portfolio";
-import { locales } from "./i18n";
+import { locales, pageMetadata } from "./i18n";
 
 it("keeps career relationships and confirmed periods equivalent in every language", async () => {
   for (const locale of locales) {
@@ -57,15 +57,22 @@ it("describes screen investigation and preserves frontend positioning", async ()
 });
 
 it("omits personal contact and repository links and month dates from rendered public pages", async () => {
+  expect(portfolio.name).toMatch(/^[A-Z]\. [A-Z]\.$/);
   for (const locale of locales) {
     const params = Promise.resolve({ locale });
     const pages = [await HomePage({ params }), await WorkPage({ params }), await LabDetailPage({ params })];
+    expect(renderToStaticMarkup(pages[0])).toContain(portfolio.name);
     for (const page of pages) {
       const html = renderToStaticMarkup(page);
       expect(html).not.toMatch(/href=["'][^"']*(?:mailto:|linkedin\.com|github\.com)/i);
       expect(html).not.toMatch(/\b20\d{2}[/-]\d{1,2}\b|20\d{2}年\d{1,2}月|20\d{2}년\s*\d{1,2}월/);
     }
     const messages = await getMessages(locale);
+    expect(messages.shell.footer).toContain(portfolio.name);
+    for (const copy of Object.values(messages.metadata)) {
+      expect(copy.title).toContain(portfolio.name);
+      expect(pageMetadata(locale, "/", copy).openGraph).toMatchObject({ siteName: portfolio.name });
+    }
     const workHtml = renderToStaticMarkup(await WorkPage({ params }));
     for (const context of Object.values(messages.work.contexts)) expect(workHtml).toContain(context);
     expect(workHtml).toContain("TypeScript");

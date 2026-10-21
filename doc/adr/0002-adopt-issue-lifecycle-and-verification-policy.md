@@ -44,7 +44,7 @@ Issues have clearer completion criteria and a short, auditable result. Verificat
 
 - [Current design specification](../DESIGN.md)
 - [Production verification checklist](../PRODUCTION_CHECKLIST.md)
-- [Issue #1: Next.js security patch](https://github.com/hoon11/jha-portfolio/issues/1)
-- [Issue #2: Vercel production verification](https://github.com/hoon11/jha-portfolio/issues/2)
-- [Issue #3: multilingual support](https://github.com/hoon11/jha-portfolio/issues/3)
+- Issue #1: Next.js security patch.
+- Issue #2: Vercel production verification.
+- Issue #3: multilingual support.
 - [GitHub PR and issue linking behavior](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue)

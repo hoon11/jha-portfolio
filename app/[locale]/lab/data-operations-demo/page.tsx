@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const copy = dataOperationsMessages[locale];
-  return pageMetadata(locale, "/lab/data-operations-demo", { title: `${copy.title} | J. Ha`, description: copy.summary });
+  return pageMetadata(locale, "/lab/data-operations-demo", { title: `${copy.title} | J. H.`, description: copy.summary });
 }
 
 export default async function DataOperationsPage({ params }: Props) {

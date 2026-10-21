@@ -9,7 +9,7 @@ export type WorkId = "dataAnalytics" | "hvac" | "existingBusiness" | "redevelopm
 const period = (start: number, end: number): Period => ({ start, end });
 
 export const portfolio = {
-  name: "J. Ha",
+  name: "J. H.",
   primaryRole: "Frontend Engineer",
   featured: ["dataAnalytics", "hvac"] satisfies WorkId[],
   work: {

@@ -58,6 +58,6 @@ export function pageMetadata(locale: Locale, path: SitePath, copy: { title: stri
         "x-default": `${productionOrigin}${localizedPath("en", path)}`,
       },
     },
-    openGraph: { ...copy, url: canonical, type: "website", siteName: "J. Ha" },
+    openGraph: { ...copy, url: canonical, type: "website", siteName: "J. H." },
   };
 }

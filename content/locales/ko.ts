@@ -2,16 +2,16 @@
 
 const messages = {
   technologyLabels: { dataVisualization: "데이터 시각화" },
-  shell: { skip: "본문으로 이동", backToTop: "맨 위로", footer: "J. Ha · 프론트엔드 엔지니어", portfolio: "포트폴리오" },
+  shell: { skip: "본문으로 이동", backToTop: "맨 위로", footer: "J. H. · 프론트엔드 엔지니어", portfolio: "포트폴리오" },
   roles: { "Frontend Engineer": "프론트엔드 엔지니어", "Full-Stack Engineer": "풀스택 엔지니어", "Software Engineer": "소프트웨어 엔지니어" },
   metadata: {
-    home: { title: "J. Ha | 프론트엔드 엔지니어", description: "안정적으로 사용할 수 있는 웹 애플리케이션을 만드는 프론트엔드 엔지니어. React, TypeScript, API 연동, 기존 애플리케이션 유지보수 경험을 소개합니다." },
-    work: { title: "실무 경력 | J. Ha", description: "프론트엔드 개발, 애플리케이션 개발과 유지보수, 디버깅에 관한 재직 이력과 담당 업무." },
-    lab: { title: "Lab | J. Ha", description: "J. Ha의 프론트엔드 개인 프로젝트." },
-    detail: { title: "API Rescue Lab | J. Ha", description: "응답이 느리거나 실패하거나 잘못된 데이터를 포함할 때 프론트엔드가 유용한 화면을 유지하는 방법을 보여주는 샘플 작업 로컬 시뮬레이션." },
+    home: { title: "J. H. | 프론트엔드 엔지니어", description: "안정적으로 사용할 수 있는 웹 애플리케이션을 만드는 프론트엔드 엔지니어. React, TypeScript, API 연동, 기존 애플리케이션 유지보수 경험을 소개합니다." },
+    work: { title: "실무 경력 | J. H.", description: "프론트엔드 개발, 애플리케이션 개발과 유지보수, 디버깅에 관한 재직 이력과 담당 업무." },
+    lab: { title: "Lab | J. H.", description: "J. H.의 프론트엔드 개인 프로젝트." },
+    detail: { title: "API Rescue Lab | J. H.", description: "응답이 느리거나 실패하거나 잘못된 데이터를 포함할 때 프론트엔드가 유용한 화면을 유지하는 방법을 보여주는 샘플 작업 로컬 시뮬레이션." },
   },
   home: {
-    greeting: "안녕하세요, J. Ha입니다 · 프론트엔드 엔지니어",
+    greeting: "안녕하세요, J. H.입니다 · 프론트엔드 엔지니어",
     headline: "안정적으로 사용할 수 있는 웹 애플리케이션을 만드는 프론트엔드 엔지니어.",
     introduction: "프론트엔드 애플리케이션을 개발하고 유지보수하며 문제를 해결합니다. React, TypeScript, API 연동, AWS·서버리스 환경과 운영 중인 기존 코드베이스에서 일한 경험이 있습니다.",
     viewWork: "실무 경력 보기", exploreLab: "Lab 둘러보기", workEyebrow: "01 / 실무 경력", experienceTitle: "주요 개발 경험", allWork: "전체 경력 보기",

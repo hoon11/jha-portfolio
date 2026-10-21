@@ -65,7 +65,7 @@ export default function SiteNavigation({ locale, messages }: { locale: Locale; m
 
   return <header className="site-header">
     <div className="brand-row">
-      <Link className="wordmark" href={localizedPath(locale)} onClick={() => { setOpen(false); setHomeSection("home"); }}>J. Ha<span>{messages.profession}</span></Link>
+      <Link className="wordmark" href={localizedPath(locale)} onClick={() => { setOpen(false); setHomeSection("home"); }}>J. H.<span>{messages.profession}</span></Link>
       <button
         ref={buttonRef}
         className="menu-toggle"

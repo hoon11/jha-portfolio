@@ -43,7 +43,7 @@ Review the site as a visitor who has no background information.
 
 ### First impression
 
-- [ ] The Home hero immediately identifies J. Ha as a Frontend Engineer.
+- [ ] The Home hero immediately identifies J. H. as a Frontend Engineer.
 - [ ] The hero message describes the work in plain language.
 - [ ] The main next action and navigation paths are easy to find.
 
