@@ -11,6 +11,7 @@
 - 2026-10-14. 회사명·정확한 월·개인 연락처와 저장소 링크를 제외하고, 업무 맥락과 연도 범위로 공개 경력을 표시하도록 변경했다(ADR-0006).
 - 2026-10-15. 사용자 요청에 따라 Work에 휴양·복귀 준비를 실무 이력과 분리해 표시하고, Home과 Work에 AWS SAA 취득 사실을 연도 단위로 추가했다.
 - 2026-10-21. 공개 이름을 완전한 이니셜 `J. H.`로 통일하고, 공개 문서에 남아 있던 개인 저장소 링크를 이슈 번호 참조로 바꿨다. ADR-0004와 ADR-0006의 공개 범위를 유지한다.
+- 2026-11-12. 확인된 경력을 바탕으로 TypeScript 단계 도입, CSS Grid·Flex 개선, 사양·DB 조사 사례를 갱신했다. API 개발, Vue·Nuxt 관리 화면, PHP 리포트와 Java 업무 화면을 해당 이력에 추가하고 확인된 프로젝트 연도를 표시한다.
 
 이 문서는 포트폴리오의 의도한 동작을 정하는 단일 공개 설계 기준이다. 구현과 검증은 이 기준을 따른다. 시각 참고 이미지는 레이아웃과 스타일의 참고자료이며, 경력 사실이나 기능 요구사항의 출처가 아니다.
 
@@ -38,7 +39,7 @@ Hero 권장 문구는 다음과 같다.
 
 보조 문구는 다음과 같다.
 
-> I build, maintain, and debug frontend applications, with experience in React, TypeScript, API integration, AWS/serverless systems, and existing production codebases.
+> I build and maintain web applications with React, TypeScript, and Angular. I trace problems through existing specifications, code, and databases, and work on APIs, backend services, and AWS when the solution requires it.
 
 핵심 메시지는 기존 웹앱을 이해하고 문제를 재현하며 필요한 수정을 구현하고 검증할 수 있다는 점이다. 새 기능 구현도 가능한 frontend 엔지니어라는 인상을 유지한다.
 
@@ -88,7 +89,7 @@ Home의 Selected Experience는 `Data Analytics Platform`과 `HVAC Monitoring & M
 
 `/work`의 h1은 `Professional Experience`다. 네 재직 이력을 최신순으로 유지하되 회사명 대신 업무 Web 개발, 서버리스 Web 개발, 데이터 분석 화면, 업무 앱 유지보수의 맥락을 h2로 표시한다. 이 제목은 회사명이 아닌 업무 종류임을 소개에서 설명한다. 직책과 `Employment`로 구분한 재직 연도 범위를 먼저 보여준다. 그다음 h3 `Selected Work` 아래에 해당 이력의 확인된 프로젝트와 주요 업무를 h4 항목으로 배치한다. 확인된 프로젝트만 `Project` 연도 범위를 표시한다. 재직 기간을 프로젝트 기간으로 복사하지 않는다.
 
-최신 업무 Web 개발 이력 아래에는 Business Web Application Redevelopment, HVAC Monitoring & Management System, Existing Business Web Application을 프로젝트 연도 범위와 함께 최신순으로 둔다. 카드 UI의 배치 처리 개선과 기존 코드의 결함 조사·수정을 구체적으로 설명하되 특정 로우코드 도구명과 화면 수는 공개하지 않는다. 서버리스 개발과 업무 앱 유지보수 이력은 확인된 업무를 간결하게 설명하고, 임의의 프로젝트 이름이나 기간을 만들지 않는다. 데이터 분석 화면 이력에는 내부 전처리용 그래프, TypeScript 도입, 플랫폼 유지보수 경험을 보여준다. 확인되지 않은 결과를 추가하지 않는다.
+최신 업무 Web 개발 이력 아래에는 Business Web Application Redevelopment, HVAC Monitoring & Management System, Existing Business Web Application을 프로젝트 연도 범위와 함께 최신순으로 둔다. 카드 UI의 CSS Grid·Flex 배치 개선, 사양·DB 제약의 불일치 확인, 기존 코드의 결함 조사·수정을 구체적으로 설명하되 특정 로우코드 도구명과 화면 수는 공개하지 않는다. 서버리스 개발 이력에는 IT 자산 관리 API와 Vue·Nuxt 의료 앱 관리 화면을, 데이터 분석 화면 이력에는 PHP 리포트, 내부 전처리용 그래프, TypeScript 단계 도입과 HTTPS 설정, 플랫폼 유지보수를 표시한다. 업무 앱 유지보수 이력은 Java·jQuery 업무 화면과 Windows 태블릿 유지보수·이전 지원을 구분한다. 프로젝트 연도는 확인된 기간만 표시하며, 기간이 확인되지 않은 내부 플랫폼 유지보수에는 기간을 붙이지 않는다. 확인되지 않은 결과를 추가하지 않는다.
 
 모바일에서도 업무 맥락, 직책, 재직 연도 범위와 작업 설명을 모두 표시한다. `Selected Work` 아래 항목의 들여쓰기를 줄여 읽을 폭을 확보한다. Work에 별도의 선정 사례 구역, 필터, 펼침 상태를 추가하지 않는다.
 

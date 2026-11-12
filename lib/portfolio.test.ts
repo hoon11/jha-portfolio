@@ -14,15 +14,13 @@ it("keeps career relationships and confirmed periods equivalent in every languag
     expect(view.employment.map((job) => job.id)).toEqual(["experience1", "experience2", "experience3", "experience4"]);
     expect(view.employment.map((job) => job.context)).toEqual(portfolio.employment.map((job) => messages.work.contexts[job.id]));
     expect(view.employment.map((job) => job.selectedWork.map((work) => work.id))).toEqual([
-      ["redevelopment", "hvac", "existingBusiness"], ["webDevelopment"], ["dataAnalytics", "platformMaintenance"], ["systemMaintenance"],
+      ["redevelopment", "hvac", "existingBusiness"], ["assetApi", "webDevelopment"], ["biReporting", "dataAnalytics", "platformMaintenance"], ["businessMaintenance", "systemMaintenance"],
     ]);
     expect(view.experience.map((work) => work.id)).toEqual(["dataAnalytics", "hvac"]);
     expect(view.experience.map((work) => work.context)).toEqual([messages.work.contexts.experience3, messages.work.contexts.experience1]);
     expect(view.experience[0].technologies).toBe({ en: "React / TypeScript / Data visualization", ja: "React / TypeScript / データ可視化", ko: "React / TypeScript / 데이터 시각화" }[locale]);
-    expect(view.employment[2].selectedWork.every((work) => work.projectDates === null)).toBe(true);
-    expect(view.employment[1].selectedWork[0].projectDates).toBeNull();
-    expect(view.employment[3].selectedWork[0].projectDates).toBeNull();
-    expect(view.experience[0].dates).toBe(view.employment[2].dates);
+    expect(view.employment[2].selectedWork[2].projectDates).toBeNull();
+    expect(view.experience[0].dates).toBe(view.employment[2].selectedWork[1].projectDates);
     expect(view.experience[1].dates).toBe(view.employment[0].selectedWork[1].projectDates);
     expect(view.employment[0].dates).not.toBe(view.employment[0].selectedWork[0].projectDates);
     expect(view.employment[0].role).toBe(messages.roles["Full-Stack Engineer"]);
