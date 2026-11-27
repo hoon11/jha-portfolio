@@ -1,8 +1,8 @@
 # J. H. portfolio
 
-A frontend engineering portfolio with selected professional work and API Rescue Lab, an interactive frontend reliability demonstration. Employer names, exact months, and direct personal contact or repository links are omitted under ADR-0006.
+A frontend engineering portfolio with selected professional work and three interactive demos. API Rescue Lab shows recovery from failed requests, Data Operations shows order reporting and editing, and HVAC Monitoring shows device status and temperature history. Employer names, exact months, and direct personal contact or repository links are omitted under ADR-0006.
 
-Built with Next.js, React, TypeScript, and plain CSS. The pages and shared layout are Server Components. Navigation and the lab have separate, small Client Components. The site uses a local decorative SVG and no external fonts.
+Built with Next.js, React, TypeScript, and plain CSS. The pages and shared layout are Server Components. Navigation, document tabs, and demo interactions use Client Components. The site uses a local decorative SVG and no external fonts.
 
 | Route | Content |
 | --- | --- |
