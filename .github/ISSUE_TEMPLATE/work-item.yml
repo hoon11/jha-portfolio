@@ -1,0 +1,29 @@
+name: Work item
+description: Define the outcome, scope, completion criteria, and verification method
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: What observable outcome should this work achieve?
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope and requirements
+      description: Describe what the issue owns. Include constraints, dependencies, or open decisions when they affect the work.
+  - type: textarea
+    id: done
+    attributes:
+      label: Definition of Done
+      description: List observable results that must be true before closing the issue.
+    validations:
+      required: true
+  - type: textarea
+    id: verification
+    attributes:
+      label: Verification
+      description: Describe how to check the result and whether production verification applies.
+    validations:
+      required: true

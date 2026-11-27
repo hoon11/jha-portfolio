@@ -18,6 +18,12 @@ Do not ask again for an action the user's current request already authorizes. Co
 
 Ask only when a material ambiguity cannot be resolved from the repository. Before destructive or hard-to-reverse work, substantial deletion, Git history rewrites or force pushes, visibility, credential or access changes, monetary costs, or external/public actions such as messages, publishing, and deployments, check explicit authorization and applicable approval gates. Stop if either is missing. Do not commit or push when the user forbids them.
 
+## Issues and pull requests
+
+Use the [Work item form](.github/ISSUE_TEMPLATE/work-item.yml) for new issues. When creating an issue through the CLI or API, include the goal, scope, observable completion criteria, and verification method. Record whether production verification applies.
+
+Use the [pull request template](.github/pull_request_template.md). Link the issue and record the verification result. Use a plain reference such as `Refs #N` when verification remains after merge.
+
 ## Follow-up issues
 
 Automatically register follow-up GitHub issues only when the user's active task explicitly authorizes registration. Honor read-only restrictions. Otherwise report public-safe candidates without publishing them.
